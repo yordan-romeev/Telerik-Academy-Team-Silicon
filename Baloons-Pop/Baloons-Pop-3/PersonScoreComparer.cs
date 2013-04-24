@@ -7,9 +7,15 @@ namespace BalloonsPops
 {
     class PersonScoreComparer : IComparer<Person>
     {
-        public int Compare(Person x, Person y)
+         /// <summary>
+        /// Compares two people by their score.
+        /// </summary>
+        /// <param name="firstPerson"></param>
+        /// <param name="secondPerson"></param>
+        /// <returns></returns>
+        public int Compare(Person firstPerson, Person secondPerson)
         {
-            return x.Score.CompareTo(y.Score);
+            return firstPerson.Score.CompareTo(secondPerson.Score);
         }
     }
 }
