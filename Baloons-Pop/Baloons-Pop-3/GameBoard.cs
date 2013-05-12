@@ -15,8 +15,6 @@ namespace BalloonsPops
             get
             {
                 return count;
-
-
             }
         }
         public int RemainingBaloons
@@ -39,7 +37,6 @@ namespace BalloonsPops
                 {
                     c.X = i;
                     c.Y = j;
-
 
                     AddNewBaloonToGameBoard(c, (char)(random.Next(1, 5) + (int)'0'));
                 }
@@ -69,7 +66,6 @@ namespace BalloonsPops
             {
                 for (int j = 0; j < 25; j++)
                 {
-
                     gb[j, i] = ' ';
                 }
             }
@@ -81,7 +77,6 @@ namespace BalloonsPops
             }
 
             char counter = '0';
-
 
             for (int i = 4; i < 25; i++)
             {
@@ -95,7 +90,6 @@ namespace BalloonsPops
                 gb[i, 1] = '-';
             }
 
-
             //printing left game board wall
             counter = '0';
 
@@ -105,7 +99,6 @@ namespace BalloonsPops
                 {
                     gb[0, i] = counter++;
                     gb[1, i] = ' ';
-
 
                     gb[2, i] = '|';
                     gb[3, i] = ' ';
@@ -131,8 +124,6 @@ namespace BalloonsPops
             {
                 for (int j = 0; j < 25; j++)
                 {
-
-
                     Console.Write(gb[j, i]);
                 }
                 Console.WriteLine();
@@ -150,8 +141,6 @@ namespace BalloonsPops
             {
                 Console.WriteLine("Illegal move: cannot pop missing ballon!");return;
             }
-
-
 
             AddNewBaloonToGameBoard(c, '.');
             broya4--;
@@ -177,8 +166,6 @@ namespace BalloonsPops
             tempCoordinates.Y = c.Y - 1;
             while (currentBaloon == get(tempCoordinates))
             {
-
-
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
                 broya4--;
                 tempCoordinates.Y--;
@@ -202,8 +189,6 @@ namespace BalloonsPops
             char tmp = get(c);
             AddNewBaloonToGameBoard(c, get(c1));
             AddNewBaloonToGameBoard(c1, tmp);
-
-
         }
 
         private void LandFlyingBaloons()
@@ -252,8 +237,6 @@ namespace BalloonsPops
                 IsCoordinates = true;
                 return true;
             }
-
-
             else
             {
                 IsCoordinates = false;
@@ -261,7 +244,4 @@ namespace BalloonsPops
             }
         }
     }
-
-
-
 }
