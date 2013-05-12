@@ -5,7 +5,6 @@ using System.Text;
 
 namespace BalloonsPops
 {
-	// veche pisha na c#, uraaaaaaaaaaaaaaa, mnogo e yako tova be!
     class baloncheta
     {
         static void Main(string[] args)
