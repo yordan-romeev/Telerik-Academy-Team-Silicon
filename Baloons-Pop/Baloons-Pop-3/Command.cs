@@ -8,7 +8,7 @@ namespace BalloonsPops
     class Command
     {
 
-        string c;
+        private string c;
 
         public string Value
         {

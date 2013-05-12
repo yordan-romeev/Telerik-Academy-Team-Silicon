@@ -7,8 +7,8 @@ namespace BalloonsPops
 {
     class Person
     {
-        string name;
-        int score;
+        private string name;
+        private int score;
 
         public string Name
         {

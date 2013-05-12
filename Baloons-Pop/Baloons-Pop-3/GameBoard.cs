@@ -7,9 +7,9 @@ namespace BalloonsPops
 {
     class GameBoard
     {
-        char[,] gb = new char[25, 8];
-        int count = 0;
-        int broya4 = 50;
+        private char[,] gb = new char[25, 8];
+        private int count = 0;
+        private int broya4 = 50;
         public int ShootCounter
         {
             get
