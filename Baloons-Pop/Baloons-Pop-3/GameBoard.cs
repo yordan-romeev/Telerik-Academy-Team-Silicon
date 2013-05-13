@@ -10,6 +10,7 @@ namespace BalloonsPops
         private char[,] gb = new char[25, 8];
         private int count = 0;
         private int broya4 = 50;
+
         public int ShootCounter
         {
             get
@@ -17,6 +18,7 @@ namespace BalloonsPops
                 return count;
             }
         }
+
         public int RemainingBaloons
         {
             get
@@ -24,6 +26,7 @@ namespace BalloonsPops
                 return broya4;
             }
         }
+
         public void GenerateNewGame()
         {
             Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
@@ -42,6 +45,7 @@ namespace BalloonsPops
                 }
             }
         }
+
         private void AddNewBaloonToGameBoard(Coordinates c, char value)
         {
             int xPosition, yPosition;
@@ -49,6 +53,7 @@ namespace BalloonsPops
             yPosition = 2 + c.Y;
             gb[xPosition, yPosition] = value;
         }
+
         private char get(Coordinates c)
         {
             int xPosition, yPosition;
@@ -59,6 +64,7 @@ namespace BalloonsPops
             yPosition = 2 + c.Y;
             return gb[xPosition, yPosition];
         }
+
         private void FillBlankGameBoard()
         {
             //printing blank spaces
