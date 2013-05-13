@@ -56,8 +56,7 @@ namespace BalloonsPops
                 }
             }
 
-            Person player = new Person();
-            player.Score = gb.ShootCounter;
+            Person player = new Person(gb.ShootCounter);
 
             if (ts.IsTopScore(player))
             {
