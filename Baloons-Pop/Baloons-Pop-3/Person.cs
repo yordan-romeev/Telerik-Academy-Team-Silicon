@@ -32,11 +32,12 @@ namespace BalloonsPops
         {
             get
             {
-                return name;
+                return this.name;
             }
+
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
@@ -44,11 +45,12 @@ namespace BalloonsPops
         {
             get
             {
-                return score;
+                return this.score;
             }
+
             set
             {
-                score = value;
+                this.score = value;
             }
         }
 
