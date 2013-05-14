@@ -5,9 +5,9 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    public class baloncheta
+    public class Balloons
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             GameBoard gb = new GameBoard();
             gb.GenerateNewGame();
