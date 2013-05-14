@@ -9,24 +9,24 @@ namespace BalloonsPops
     {
         public static void Main(string[] args)
         {
-            GameBoard gb = new GameBoard();
-            gb.GenerateNewGame();
-            gb.PrintGameBoard();
-            TopScore ts = new TopScore();
+            GameBoard gameBoard = new GameBoard();
+            gameBoard.GenerateNewGame();
+            gameBoard.PrintGameBoard();
+            TopScore topScore = new TopScore();
 
-            ts.OpenTopScoreList();
+            topScore.OpenTopScoreList();
             
             bool isCoordinates;
             Coordinates coordinates = new Coordinates();
             Command command = new Command();
-            while (gb.RemainingBaloons > 0)
+            while (gameBoard.RemainingBaloons > 0)
             {
-                if (gb.ReadInput(out isCoordinates, ref coordinates, ref command))
+                if (gameBoard.ReadInput(out isCoordinates, ref coordinates, ref command))
                 {
                     if (isCoordinates)
                     {
-                        gb.Shoot(coordinates);
-                        gb.PrintGameBoard();
+                        gameBoard.Shoot(coordinates);
+                        gameBoard.PrintGameBoard();
                     }
                     else
                     {
@@ -34,14 +34,14 @@ namespace BalloonsPops
                         {
                             case "top":
                                 {
-                                    ts.PrintScoreList();
+                                    topScore.PrintScoreList();
                                 }
 
                                 break;
                             case "restart":
                                 {
-                                    gb.GenerateNewGame();
-                                    gb.PrintGameBoard();
+                                    gameBoard.GenerateNewGame();
+                                    gameBoard.PrintGameBoard();
                                 }
 
                                 break;
@@ -58,16 +58,16 @@ namespace BalloonsPops
                 }
             }
 
-            Person player = new Person(gb.ShootCounter);
+            Person player = new Person(gameBoard.ShootCounter);
 
-            if (ts.IsTopScore(player))
+            if (topScore.IsTopScore(player))
             {
                 Console.WriteLine("Please enter your name for the top scoreboard: ");
                 player.Name = Console.ReadLine();
-                ts.AddToTopScoreList(player);
+                topScore.AddToTopScoreList(player);
             }
 
-            ts.SaveTopScoreList();
+            topScore.SaveTopScoreList();
         }
     }
 }
