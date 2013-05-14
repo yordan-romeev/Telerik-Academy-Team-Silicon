@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class GameBoard
+    public class GameBoard
     {
         private char[,] gb = new char[25, 8];
         private int count = 0;

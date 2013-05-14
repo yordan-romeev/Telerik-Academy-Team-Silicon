@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class PersonScoreComparer : IComparer<Person>
+    public class PersonScoreComparer : IComparer<Person>
     {
          /// <summary>
         /// Compares two people by their score.

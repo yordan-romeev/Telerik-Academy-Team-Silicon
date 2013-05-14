@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class baloncheta
+    public class baloncheta
     {
         static void Main(string[] args)
         {

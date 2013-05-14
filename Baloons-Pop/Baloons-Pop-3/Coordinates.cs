@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class Coordinates
+    public class Coordinates
     {
         private int x;
         private int y;

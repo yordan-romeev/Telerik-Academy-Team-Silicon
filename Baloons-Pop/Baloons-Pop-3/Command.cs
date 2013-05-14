@@ -5,7 +5,7 @@ using System.Text;
 //test commit
 namespace BalloonsPops
 {
-    class Command
+    public class Command
     {
         private string c;
 

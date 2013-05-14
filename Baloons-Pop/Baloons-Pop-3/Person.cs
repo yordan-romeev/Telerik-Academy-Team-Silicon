@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class Person
+    public class Person
     {
         private string name;
         private int score;

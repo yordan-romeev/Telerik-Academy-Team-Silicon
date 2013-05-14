@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BalloonsPops
 {
-    class TopScore
+    public class TopScore
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
         List<Person> topScoreList = new List<Person>();
@@ -57,6 +57,7 @@ namespace BalloonsPops
                         Person player = new Person(playerName, playerScore);
                         topScoreList.Add(player);
                     }
+
                     line = TopScoreStreamReader.ReadLine();
                 }
             }
