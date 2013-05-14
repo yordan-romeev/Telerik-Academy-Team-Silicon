@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "baloncheta", "baloncheta.csproj", "{A1269EF5-33BD-4CAA-927A-AFA7C821B940}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "baloncheta", "Baloons\baloncheta.csproj", "{A1269EF5-33BD-4CAA-927A-AFA7C821B940}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
