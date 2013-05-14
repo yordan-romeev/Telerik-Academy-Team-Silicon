@@ -9,15 +9,15 @@ namespace BalloonsPops
     public class TopScore
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
-        List<Person> topScoreList = new List<Person>();
+        private List<Person> topScoreList = new List<Person>();
 
         public bool IsTopScore(Person person)
         {
-            if (topScoreList.Count >= MAX_TOP_SCORE_COUNT)
+            if (this.topScoreList.Count >= MAX_TOP_SCORE_COUNT)
             {
                 PersonScoreComparer comparer = new PersonScoreComparer();
-                topScoreList.Sort(comparer);
-                if (topScoreList[MAX_TOP_SCORE_COUNT - 1] > person)
+                this.topScoreList.Sort(comparer);
+                if (this.topScoreList[MAX_TOP_SCORE_COUNT - 1] > person)
                 {
                     return true;
                 }
@@ -26,25 +26,26 @@ namespace BalloonsPops
                     return false;
                 }
             }
+
             return true;
         }
 
         public void AddToTopScoreList(Person person)
         {
-            topScoreList.Add(person);
+            this.topScoreList.Add(person);
             PersonScoreComparer comparer = new PersonScoreComparer();
-            topScoreList.Sort(comparer);
-            while (topScoreList.Count > 5)
+            this.topScoreList.Sort(comparer);
+            while (this.topScoreList.Count > 5)
             {
-                topScoreList.RemoveAt(5);
+                this.topScoreList.RemoveAt(5);
             }
         }
 
         public void OpenTopScoreList()
         {
-            using (StreamReader TopScoreStreamReader = new StreamReader("..\\..\\TopScore.txt"))
+            using (StreamReader topScoreStreamReader = new StreamReader("..\\..\\TopScore.txt"))
             {
-                string line = TopScoreStreamReader.ReadLine();
+                string line = topScoreStreamReader.ReadLine();
                 while (line != null)
                 {
                     char[] separators = { ' ' };
@@ -55,40 +56,41 @@ namespace BalloonsPops
                         string playerName = substrings[1];
                         int playerScore = int.Parse(substrings[substringsCount - 2]);
                         Person player = new Person(playerName, playerScore);
-                        topScoreList.Add(player);
+                        this.topScoreList.Add(player);
                     }
 
-                    line = TopScoreStreamReader.ReadLine();
+                    line = topScoreStreamReader.ReadLine();
                 }
             }
         }
 
         public void SaveTopScoreList()
         {
-            if (topScoreList.Count > 0)
+            if (this.topScoreList.Count > 0)
             {
-                string toWrite = "";
-                using (StreamWriter TopScoreStreamWriter = new StreamWriter("..\\..\\TopScore.txt"))
+                string toWrite = string.Empty;
+                using (StreamWriter topScoreStreamWriter = new StreamWriter("..\\..\\TopScore.txt"))
                 {
-                    for (int i = 0; i < topScoreList.Count; i++)
+                    for (int i = 0; i < this.topScoreList.Count; i++)
                     {
-                        toWrite += i.ToString() + ". " + topScoreList[i].Name + " --> " + topScoreList[i].Score.ToString() + " moves";
-                        TopScoreStreamWriter.WriteLine(toWrite);
-                        toWrite = "";
+                        toWrite += i.ToString() + ". " + this.topScoreList[i].Name + " --> " + this.topScoreList[i].Score.ToString() + " moves";
+                        topScoreStreamWriter.WriteLine(toWrite);
+                        toWrite = string.Empty;
                     }
                 }
             }
-            PrintScoreList();
+
+            this.PrintScoreList();
         }
 
         public void PrintScoreList()
         {
             Console.WriteLine("Scoreboard:");
-            if (topScoreList.Count > 0)
+            if (this.topScoreList.Count > 0)
             {
-                for (int i = 0; i < topScoreList.Count; i++)
+                for (int i = 0; i < this.topScoreList.Count; i++)
                 {
-                    Console.WriteLine(i.ToString() + ". " + topScoreList[i].Name + " --> " + topScoreList[i].Score.ToString() + "moves");
+                    Console.WriteLine(i.ToString() + ". " + this.topScoreList[i].Name + " --> " + this.topScoreList[i].Score.ToString() + "moves");
                 }
             }
             else
