@@ -16,6 +16,7 @@ namespace BalloonsPops
             {
                 return x;
             }
+
             set
             {
                 if (value >= 0 && value <= 9) x = value;
@@ -28,6 +29,7 @@ namespace BalloonsPops
             {
                 return y;
             }
+
             set
             {
                 if (value >= 0 && value <= 4) y = value;

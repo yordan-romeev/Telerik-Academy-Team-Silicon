@@ -7,7 +7,6 @@ namespace BalloonsPops
 {
     class Command
     {
-
         private string c;
 
         public string Value
@@ -16,6 +15,7 @@ namespace BalloonsPops
             {
                 return this.c;
             }
+
             set
             {
                 this.c = value;

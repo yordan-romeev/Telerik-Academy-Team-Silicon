@@ -60,7 +60,6 @@ namespace BalloonsPops
             if (c.X < 0 || c.Y < 0 || c.X > 9 || c.Y > 4) return 'e';
             xPosition = 4 + c.X * 2;
 
-
             yPosition = 2 + c.Y;
             return gb[xPosition, yPosition];
         }
@@ -132,8 +131,10 @@ namespace BalloonsPops
                 {
                     Console.Write(gb[j, i]);
                 }
+
                 Console.WriteLine();
             }
+
             Console.WriteLine();
         }
 
@@ -220,8 +221,6 @@ namespace BalloonsPops
                         }
                     }
                 }
-
-
             }
         }
 

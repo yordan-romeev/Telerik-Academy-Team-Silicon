@@ -36,12 +36,14 @@ namespace BalloonsPops
                                 {
                                     ts.PrintScoreList();
                                 }
+
                                 break;
                             case "restart":
                                 {
                                     gb.GenerateNewGame();
                                     gb.PrintGameBoard();
                                 }
+
                                 break;
                             case "exit":
                                 {
@@ -64,6 +66,7 @@ namespace BalloonsPops
                 player.Name = Console.ReadLine();
                 ts.AddToTopScoreList(player);
             }
+
             ts.SaveTopScoreList();
         }
     }
