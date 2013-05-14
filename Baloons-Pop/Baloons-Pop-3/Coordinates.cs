@@ -14,12 +14,15 @@ namespace BalloonsPops
         {
             get
             {
-                return x;
+                return this.x;
             }
 
             set
             {
-                if (value >= 0 && value <= 9) x = value;
+                if (0 <= value && value <= 9)
+                {
+                    this.x = value;
+                }
             }
         }
 
@@ -27,12 +30,15 @@ namespace BalloonsPops
         {
             get
             {
-                return y;
+                return this.y;
             }
 
             set
             {
-                if (value >= 0 && value <= 4) y = value;
+                if (0 <= value && value <= 4)
+                {
+                    this.y = value;
+                }
             }
         }
 
