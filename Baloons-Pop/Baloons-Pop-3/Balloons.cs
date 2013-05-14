@@ -30,22 +30,22 @@ namespace BalloonsPops
                     }
                     else
                     {
-                        switch (command.Value)
+                        switch (command.Type)
                         {
-                            case "top":
+                            case CommandType.TopScore:
                                 {
                                     topScore.PrintScoreList();
                                 }
 
                                 break;
-                            case "restart":
+                            case CommandType.Restart:
                                 {
                                     gameBoard.GenerateNewGame();
                                     gameBoard.PrintGameBoard();
                                 }
 
                                 break;
-                            case "exit":
+                            case CommandType.Exit:
                                 {
                                     return;
                                 }

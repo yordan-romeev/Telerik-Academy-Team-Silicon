@@ -7,38 +7,29 @@ namespace BalloonsPops
 {
     public class Command
     {
-        private string c;
-
-        public string Value
-        {
-            get
-            {
-                return this.c;
-            }
-
-            set
-            {
-                this.c = value;
-            }
+        public CommandType Type 
+        { 
+            get; 
+            set; 
         }
 
         public static bool TryParse(string input, ref Command result)
         {
             if (input == "top")
             {
-                result.Value = input;
+                result.Type = CommandType.TopScore;
                 return true;
             }
 
             if (input == "restart")
             {
-                result.Value = input;
+                result.Type = CommandType.Restart;
                 return true;
             }
 
             if (input == "exit")
             {
-                result.Value = input;
+                result.Type = CommandType.Exit;
                 return true;
             }
 
