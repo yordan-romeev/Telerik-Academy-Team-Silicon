@@ -10,8 +10,8 @@ namespace BalloonsPops
          /// <summary>
         /// Compares two people by their score.
         /// </summary>
-        /// <param name="firstPerson"></param>
-        /// <param name="secondPerson"></param>
+        /// <param name="firstPerson">first person</param>
+        /// <param name="secondPerson">second person</param>
         /// <returns></returns>
         public int Compare(Person firstPerson, Person secondPerson)
         {

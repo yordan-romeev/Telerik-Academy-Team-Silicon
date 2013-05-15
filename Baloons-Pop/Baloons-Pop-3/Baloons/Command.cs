@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace BalloonsPops
             set; 
         }
 
-         public bool ConvertCommand(string input)
+        public bool ConvertCommand(string input)
         {
             switch (input.ToLower())
             {
