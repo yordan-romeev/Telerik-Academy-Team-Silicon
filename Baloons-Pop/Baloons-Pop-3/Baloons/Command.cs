@@ -13,27 +13,22 @@ namespace BalloonsPops
             set; 
         }
 
-        public static bool TryParse(string input, ref Command result)
+         public bool ConvertCommand(string input)
         {
-            if (input == "top")
+            switch (input.ToLower())
             {
-                result.Type = CommandType.TopScore;
-                return true;
+                case "top":
+                    this.Type = CommandType.TopScore;
+                    return true;
+                case "restart":
+                    this.Type = CommandType.Restart;
+                    return true;
+                case "exit":
+                    this.Type = CommandType.Exit;
+                    return true;
+                default:
+                    return false;
             }
-
-            if (input == "restart")
-            {
-                result.Type = CommandType.Restart;
-                return true;
-            }
-
-            if (input == "exit")
-            {
-                result.Type = CommandType.Exit;
-                return true;
-            }
-
-            return false;
         }
     }
 }
