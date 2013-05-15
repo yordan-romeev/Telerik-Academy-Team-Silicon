@@ -7,15 +7,50 @@ namespace BalloonsPops
 {
     public class GameBoard
     {
-        private char[,] gameBoard = new char[25, 8];
+        private int width;
+        private int height;
+        private char[,] gameBoard;
         private int count = 0;
         private int remainingBalloons = 50;
+
+        public GameBoard(int width, int height)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.gameBoard = new char[this.Width, this.Height];
+        }
+
+        public int Width
+        {
+            get
+            {
+                return this.width;
+            }
+
+            private set
+            {
+                this.width = value;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            private set
+            {
+                this.height = value;
+            }
+        }
 
         public int ShootCounter
         {
             get
             {
-                return count;
+                return this.count;
             }
         }
 
@@ -23,7 +58,7 @@ namespace BalloonsPops
         {
             get
             {
-                return remainingBalloons;
+                return this.remainingBalloons;
             }
         }
 

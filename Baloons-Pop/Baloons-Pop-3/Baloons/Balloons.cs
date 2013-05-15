@@ -9,7 +9,7 @@ namespace BalloonsPops
     {
         public static void Main(string[] args)
         {
-            GameBoard gameBoard = new GameBoard();
+            GameBoard gameBoard = new GameBoard(25, 8);
             gameBoard.GenerateNewGame();
             gameBoard.PrintGameBoard();
             TopScore topScore = new TopScore();
