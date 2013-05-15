@@ -73,11 +73,11 @@ namespace BalloonsPops
 
             for (int row = 0; row < 10; row++)
             {
-                for (int coll = 0; coll < 5; coll++)
+                for (int col = 0; col < 5; col++)
                 {
                     coordinate.PositionX = row;
-                    coordinate.PositionY = coll;
-                    
+                    coordinate.PositionY = col;
+
                     AddNewBaloonToGameBoard(coordinate, (char)(random.Next(1, 5) + (int)'0'));
                 }
             }
@@ -110,16 +110,21 @@ namespace BalloonsPops
             return gameBoard[xPosition, yPosition];
         }
 
-        private void FillBlankGameBoard()
+        private void Initialise()
         {
-            //printing blank spaces
-            for (int i = 0; i < 8; i++)
+            //assign initial value to all cells
+            for (int i = 0; i < this.Height; i++)
             {
-                for (int j = 0; j < 25; j++)
+                for (int j = 0; j < this.Width; j++)
                 {
                     gameBoard[j, i] = ' ';
                 }
             }
+        }
+
+        private void FillBlankGameBoard()
+        {
+            this.Initialise();
 
             //printing the beginning of the first row
             for (int i = 0; i < 4; i++)
@@ -129,6 +134,7 @@ namespace BalloonsPops
 
             char counter = '0';
 
+            //print first row numbers
             for (int i = 4; i < this.Width; i++)
             {
                 if ((i % 2 == 0) && counter <= '9') gameBoard[i, 0] = (char)counter++;
@@ -171,9 +177,9 @@ namespace BalloonsPops
 
         public void PrintGameBoard()
         {
-            for (int row = 0; row < 8; row++)
+            for (int row = 0; row < this.Height; row++)
             {
-                for (int col = 0; col < 25; col++)
+                for (int col = 0; col < this.Width; col++)
                 {
                     Console.Write(gameBoard[col, row]);
                 }
