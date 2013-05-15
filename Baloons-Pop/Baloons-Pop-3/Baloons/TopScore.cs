@@ -44,7 +44,7 @@ namespace BalloonsPops
 
         public void OpenTopScoreList()
         {
-            using (StreamReader topScoreStreamReader = new StreamReader(path))
+            using (StreamReader topScoreStreamReader = new StreamReader(PATH))
             {
                 string line = topScoreStreamReader.ReadLine();
                 while (line != null)
@@ -70,7 +70,7 @@ namespace BalloonsPops
             if (this.topScoreList.Count > 0)
             {
                 string toWrite = string.Empty;
-                using (StreamWriter topScoreStreamWriter = new StreamWriter("..\\..\\TopScore.txt"))
+                using (StreamWriter topScoreStreamWriter = new StreamWriter(PATH)
                 {
                     for (int i = 0; i < this.topScoreList.Count; i++)
                     {
