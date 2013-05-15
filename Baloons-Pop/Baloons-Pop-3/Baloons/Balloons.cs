@@ -11,7 +11,7 @@ namespace BalloonsPops
         {
             GameBoard gameBoard = new GameBoard(25, 8);
             gameBoard.GenerateNewGame();
-            gameBoard.PrintGameBoard();
+            gameBoard.ToString();
             TopScore topScore = new TopScore();
 
             topScore.OpenTopScoreList();
@@ -27,7 +27,7 @@ namespace BalloonsPops
                 {
                     case InputType.Coordinates:
                         gameBoard.Shoot(coordinates.PositionX, coordinates.PositionY);
-                        gameBoard.PrintGameBoard();
+                        gameBoard.ToString();
                         break;
                     case InputType.Command:
                         switch (command.Type)
@@ -37,7 +37,7 @@ namespace BalloonsPops
                                 break;
                             case CommandType.Restart:
                                 gameBoard.GenerateNewGame();
-                                gameBoard.PrintGameBoard();
+                                gameBoard.ToString();
                                 break;
                             case CommandType.Exit:
                                 return;

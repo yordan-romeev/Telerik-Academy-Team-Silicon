@@ -138,73 +138,20 @@ namespace BalloonsPops
             }
         }
 
-        private void FillBlankGameBoard()
-        {
-            this.Initialise();
+        //public void PrintGameBoard()
+        //{
+        //    for (int row = 0; row < this.Height; row++)
+        //    {
+        //        for (int col = 0; col < this.Width; col++)
+        //        {
+        //            Console.Write(this.balloons[row, col].Value);
+        //        }
 
-            //printing the beginning of the first row
-            for (int i = 0; i < 4; i++)
-            {
-                gameBoard[i, 0] = ' ';
-            }
+        //        Console.WriteLine();
+        //    }
 
-            char counter = '0';
-
-            //print first row numbers
-            for (int i = 4; i < this.Width; i++)
-            {
-                if ((i % 2 == 0) && counter <= '9') gameBoard[i, 0] = (char)counter++;
-                else gameBoard[i, 0] = ' ';
-            }
-
-            //printing second row
-            for (int i = 3; i < this.Width - 1; i++)
-            {
-                gameBoard[i, 1] = '-';
-            }
-
-            //printing left game board wall
-            counter = '0';
-
-            for (int i = 2; i < this.Height; i++)
-            {
-                if (counter <= '4')
-                {
-                    gameBoard[0, i] = counter++;
-                    gameBoard[1, i] = ' ';
-
-                    gameBoard[2, i] = '|';
-                    gameBoard[3, i] = ' ';
-                }
-            }
-
-            //printing down game board wall
-            for (int i = 3; i < this.Width - 1; i++)
-            {
-                gameBoard[i, 7] = '-';
-            }
-
-            //printing right game board wall
-            for (int i = 2; i < this.Height - 1; i++)
-            {
-                gameBoard[this.Width - 1, i] = '|';
-            }
-        }
-
-        public void PrintGameBoard()
-        {
-            for (int row = 0; row < this.Height; row++)
-            {
-                for (int col = 0; col < this.Width; col++)
-                {
-                    Console.Write(this.balloons[row, col].Value);
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
-        }
+        //    Console.WriteLine();
+        //}
 
         public void Shoot(int row, int col)
         {
@@ -330,7 +277,41 @@ namespace BalloonsPops
                 Console.WriteLine(ex.Message);
             }
 
+            
+        }
 
+        public override string ToString()
+        {
+            Console.Write("  ");
+
+            for (int i = 0; i < this.Width; i++)
+            {
+                Console.Write("{0, 3}", i);
+            }
+
+            Console.WriteLine();
+            Console.Write("  ");
+
+            for (int i = 0; i < this.Width; i++)
+            {
+                Console.Write("{0, 3}", "~");
+            }
+
+            Console.WriteLine();
+
+            for (int row = 0; row < this.Height; row++)
+            {
+                Console.Write(row + "|");
+
+                for (int i = 0; i < this.Width; i++)
+                {
+                    Console.Write("{0, 3}", this.balloons[row, i].Value);
+                }
+
+                Console.WriteLine();
+            }
+
+            return string.Empty;
         }
     }
 }
