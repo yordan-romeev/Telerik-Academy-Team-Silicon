@@ -9,7 +9,7 @@ namespace BalloonsPops
     {
         private char[,] gameBoard = new char[25, 8];
         private int count = 0;
-        private int broya4 = 50;
+        private int remainingBalloons = 50;
 
         public int ShootCounter
         {
@@ -23,14 +23,14 @@ namespace BalloonsPops
         {
             get
             {
-                return broya4;
+                return remainingBalloons;
             }
         }
 
         public void GenerateNewGame()
         {
             Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
-            broya4 = 50;
+            remainingBalloons = 50;
             FillBlankGameBoard();
             Random random = new Random();
 
@@ -138,9 +138,9 @@ namespace BalloonsPops
         {
             for (int row = 0; row < 8; row++)
             {
-                for (int coll = 0; coll < 25; coll++)
+                for (int col = 0; col < 25; col++)
                 {
-                    Console.Write(gameBoard[coll, row]);
+                    Console.Write(gameBoard[col, row]);
                 }
 
                 Console.WriteLine();
@@ -162,7 +162,7 @@ namespace BalloonsPops
             }
 
             AddNewBaloonToGameBoard(coordinate, '.');
-            broya4--;
+            remainingBalloons--;
 
             tempCoordinates.PositionX = coordinate.PositionX - 1;
             tempCoordinates.PositionY = coordinate.PositionY;
@@ -170,7 +170,7 @@ namespace BalloonsPops
             while (currentBaloon == Get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
-                broya4--;
+                remainingBalloons--;
                 tempCoordinates.PositionX--;
             }
 
@@ -180,7 +180,7 @@ namespace BalloonsPops
             while (currentBaloon == Get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
-                broya4--;
+                remainingBalloons--;
                 tempCoordinates.PositionX++;
             }
 
@@ -190,7 +190,7 @@ namespace BalloonsPops
             while (currentBaloon == Get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
-                broya4--;
+                remainingBalloons--;
                 tempCoordinates.PositionY--;
             }
 
@@ -200,7 +200,7 @@ namespace BalloonsPops
             while (currentBaloon == Get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
-                broya4--;
+                remainingBalloons--;
                 tempCoordinates.PositionY++;
             }
 
