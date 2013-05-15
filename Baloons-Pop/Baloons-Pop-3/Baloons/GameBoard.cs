@@ -7,7 +7,7 @@ namespace BalloonsPops
 {
     public class GameBoard
     {
-        private char[,] gb = new char[25, 8];
+        private char[,] gameBoard = new char[25, 8];
         private int count = 0;
         private int broya4 = 50;
 
@@ -38,8 +38,8 @@ namespace BalloonsPops
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    c.X = i;
-                    c.Y = j;
+                    c.PositionX = i;
+                    c.PositionY = j;
 
                     AddNewBaloonToGameBoard(c, (char)(random.Next(1, 5) + (int)'0'));
                 }
@@ -49,19 +49,19 @@ namespace BalloonsPops
         private void AddNewBaloonToGameBoard(Coordinates c, char value)
         {
             int xPosition, yPosition;
-            xPosition = 4 + c.X * 2;
-            yPosition = 2 + c.Y;
-            gb[xPosition, yPosition] = value;
+            xPosition = 4 + c.PositionX * 2;
+            yPosition = 2 + c.PositionY;
+            gameBoard[xPosition, yPosition] = value;
         }
 
         private char get(Coordinates c)
         {
             int xPosition, yPosition;
-            if (c.X < 0 || c.Y < 0 || c.X > 9 || c.Y > 4) return 'e';
-            xPosition = 4 + c.X * 2;
+            if (c.PositionX < 0 || c.PositionY < 0 || c.PositionX > 9 || c.PositionY > 4) return 'e';
+            xPosition = 4 + c.PositionX * 2;
 
-            yPosition = 2 + c.Y;
-            return gb[xPosition, yPosition];
+            yPosition = 2 + c.PositionY;
+            return gameBoard[xPosition, yPosition];
         }
 
         private void FillBlankGameBoard()
@@ -71,28 +71,28 @@ namespace BalloonsPops
             {
                 for (int j = 0; j < 25; j++)
                 {
-                    gb[j, i] = ' ';
+                    gameBoard[j, i] = ' ';
                 }
             }
 
             //printing firs row
             for (int i = 0; i < 4; i++)
             {
-                gb[i, 0] = ' ';
+                gameBoard[i, 0] = ' ';
             }
 
             char counter = '0';
 
             for (int i = 4; i < 25; i++)
             {
-                if ((i % 2 == 0) && counter <= '9') gb[i, 0] = (char)counter++;
-                else gb[i, 0] = ' ';
+                if ((i % 2 == 0) && counter <= '9') gameBoard[i, 0] = (char)counter++;
+                else gameBoard[i, 0] = ' ';
             }
 
             //printing second row
             for (int i = 3; i < 24; i++)
             {
-                gb[i, 1] = '-';
+                gameBoard[i, 1] = '-';
             }
 
             //printing left game board wall
@@ -102,34 +102,34 @@ namespace BalloonsPops
             {
                 if (counter <= '4')
                 {
-                    gb[0, i] = counter++;
-                    gb[1, i] = ' ';
+                    gameBoard[0, i] = counter++;
+                    gameBoard[1, i] = ' ';
 
-                    gb[2, i] = '|';
-                    gb[3, i] = ' ';
+                    gameBoard[2, i] = '|';
+                    gameBoard[3, i] = ' ';
                 }
             }
 
             //printing down game board wall
             for (int i = 3; i < 24; i++)
             {
-                gb[i, 7] = '-';
+                gameBoard[i, 7] = '-';
             }
 
             //printing right game board wall
             for (int i = 2; i < 7; i++)
             {
-                gb[24, i] = '|';
+                gameBoard[24, i] = '|';
             }
         }
 
         public void PrintGameBoard()
         {
-            for (int i = 0; i < 8; i++)
+            for (int row = 0; row < 8; row++)
             {
-                for (int j = 0; j < 25; j++)
+                for (int coll = 0; coll < 25; coll++)
                 {
-                    Console.Write(gb[j, i]);
+                    Console.Write(gameBoard[coll, row]);
                 }
 
                 Console.WriteLine();
@@ -138,53 +138,54 @@ namespace BalloonsPops
             Console.WriteLine();
         }
 
-        public void Shoot(Coordinates c)
+        public void Shoot(Coordinates coordinate)
         {
             char currentBaloon;
-            currentBaloon = get(c);
+            currentBaloon = get(coordinate);
             Coordinates tempCoordinates = new Coordinates();
 
             if (currentBaloon < '1' || currentBaloon > '4')
             {
-                Console.WriteLine("Illegal move: cannot pop missing ballon!");return;
+                Console.WriteLine("Illegal move: cannot pop missing ballon!");
+                return;
             }
 
-            AddNewBaloonToGameBoard(c, '.');
+            AddNewBaloonToGameBoard(coordinate, '.');
             broya4--;
 
-            tempCoordinates.X = c.X - 1;
-            tempCoordinates.Y = c.Y;
+            tempCoordinates.PositionX = coordinate.PositionX - 1;
+            tempCoordinates.PositionY = coordinate.PositionY;
             while (currentBaloon == get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
                 broya4--;
-                tempCoordinates.X--;
+                tempCoordinates.PositionX--;
             }
 
-            tempCoordinates.X = c.X + 1; tempCoordinates.Y = c.Y;
+            tempCoordinates.PositionX = coordinate.PositionX + 1; tempCoordinates.PositionY = coordinate.PositionY;
             while (currentBaloon == get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
                 broya4--;
-                tempCoordinates.X++;
+                tempCoordinates.PositionX++;
             }
 
-            tempCoordinates.X = c.X;
-            tempCoordinates.Y = c.Y - 1;
+            tempCoordinates.PositionX = coordinate.PositionX;
+            tempCoordinates.PositionY = coordinate.PositionY - 1;
             while (currentBaloon == get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
                 broya4--;
-                tempCoordinates.Y--;
+                tempCoordinates.PositionY--;
             }
 
-            tempCoordinates.X = c.X;
-            tempCoordinates.Y = c.Y + 1;
+            tempCoordinates.PositionX = coordinate.PositionX;
+            tempCoordinates.PositionY = coordinate.PositionY + 1;
             while (currentBaloon == get(tempCoordinates))
             {
                 AddNewBaloonToGameBoard(tempCoordinates, '.');
                 broya4--;
-                tempCoordinates.Y++;
+                tempCoordinates.PositionY++;
             }
 
             count++;
@@ -205,18 +206,18 @@ namespace BalloonsPops
             {
                 for (int j = 0; j <= 4; j++)
                 {
-                    c.X = i;
-                    c.Y = j;
+                    c.PositionX = i;
+                    c.PositionY = j;
                     if (get(c) == '.')
                     {
                         for (int k = j; k > 0; k--)
                         {
                             Coordinates tempCoordinates = new Coordinates();
                             Coordinates tempCoordinates1 = new Coordinates();
-                            tempCoordinates.X = i;
-                            tempCoordinates.Y = k;
-                            tempCoordinates1.X = i;
-                            tempCoordinates1.Y = k - 1;
+                            tempCoordinates.PositionX = i;
+                            tempCoordinates.PositionY = k;
+                            tempCoordinates1.PositionX = i;
+                            tempCoordinates1.PositionY = k - 1;
                             Swap(tempCoordinates, tempCoordinates1);
                         }
                     }
@@ -255,6 +256,7 @@ namespace BalloonsPops
             {
                 Console.WriteLine(ex.Message);
             }
+
 
         }
     }

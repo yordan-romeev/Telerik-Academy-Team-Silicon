@@ -10,7 +10,7 @@ namespace BalloonsPops
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
         private List<Person> topScoreList = new List<Person>();
-         private const string PATH = @"..\..\TopScore.txt";
+        private const string PATH = @"..\..\TopScore.txt";
 
         public bool IsTopScore(Person person)
         {
@@ -70,7 +70,7 @@ namespace BalloonsPops
             if (this.topScoreList.Count > 0)
             {
                 string toWrite = string.Empty;
-                using (StreamWriter topScoreStreamWriter = new StreamWriter(PATH)
+                using (StreamWriter topScoreStreamWriter = new StreamWriter(PATH))
                 {
                     for (int i = 0; i < this.topScoreList.Count; i++)
                     {
