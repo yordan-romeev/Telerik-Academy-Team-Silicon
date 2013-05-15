@@ -16,45 +16,36 @@ namespace BalloonsPops
 
             topScore.OpenTopScoreList();
             
-            bool isCoordinates;
-            Coordinates coordinates = new Coordinates();
+            InputType inputType;
+            Coordinates coordinates = new Coordinates(); ;
             Command command = new Command();
+
             while (gameBoard.RemainingBaloons > 0)
             {
-                if (gameBoard.ReadInput(out isCoordinates, ref coordinates, ref command))
+                gameBoard.ReadInput(ref coordinates, ref command, out inputType);
+                switch (inputType)
                 {
-                    if (isCoordinates)
-                    {
+                    case InputType.Coordinates:
                         gameBoard.Shoot(coordinates);
                         gameBoard.PrintGameBoard();
-                    }
-                    else
-                    {
+                        break;
+                    case InputType.Command:
                         switch (command.Type)
                         {
                             case CommandType.TopScore:
-                                {
-                                    topScore.PrintScoreList();
-                                }
-
+                                topScore.PrintScoreList();
                                 break;
                             case CommandType.Restart:
-                                {
-                                    gameBoard.GenerateNewGame();
-                                    gameBoard.PrintGameBoard();
-                                }
-
+                                gameBoard.GenerateNewGame();
+                                gameBoard.PrintGameBoard();
                                 break;
                             case CommandType.Exit:
-                                {
-                                    return;
-                                }
+                                return;
                         }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Wrong Input!");
+                        break;
+                    case InputType.Invalid:
+                        Console.WriteLine("Wrong Input!");
+                        break;
                 }
             }
 
