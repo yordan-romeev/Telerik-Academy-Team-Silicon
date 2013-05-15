@@ -10,6 +10,7 @@ namespace BalloonsPops
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
         private List<Person> topScoreList = new List<Person>();
+         private const PATH = @"..\..\TopScore.txt";
 
         public bool IsTopScore(Person person)
         {
@@ -43,7 +44,7 @@ namespace BalloonsPops
 
         public void OpenTopScoreList()
         {
-            using (StreamReader topScoreStreamReader = new StreamReader("..\\..\\TopScore.txt"))
+            using (StreamReader topScoreStreamReader = new StreamReader(path))
             {
                 string line = topScoreStreamReader.ReadLine();
                 while (line != null)
