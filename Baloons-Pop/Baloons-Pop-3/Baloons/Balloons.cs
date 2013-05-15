@@ -26,7 +26,7 @@ namespace BalloonsPops
                 switch (inputType)
                 {
                     case InputType.Coordinates:
-                        gameBoard.Shoot(coordinates);
+                        gameBoard.Shoot(coordinates.PositionX, coordinates.PositionY);
                         gameBoard.PrintGameBoard();
                         break;
                     case InputType.Command:

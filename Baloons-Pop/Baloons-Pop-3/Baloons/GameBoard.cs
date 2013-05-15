@@ -10,6 +10,7 @@ namespace BalloonsPops
         private int width;
         private int height;
         private char[,] gameBoard;
+        private Balloon[,] balloons;
         private int count = 0;
         private int remainingBalloons = 50;
 
@@ -18,6 +19,7 @@ namespace BalloonsPops
             this.Width = width;
             this.Height = height;
             this.gameBoard = new char[this.Width, this.Height];
+            this.balloons = new Balloon[this.Height, this.Width];
         }
 
         public int Width
@@ -62,23 +64,37 @@ namespace BalloonsPops
             }
         }
 
+        //public void GenerateNewGame()
+        //{
+        //    Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
+        //    remainingBalloons = 50;
+        //    FillBlankGameBoard();
+        //    Random random = new Random();
+
+        //    Coordinates coordinate = new Coordinates();
+
+        //    for (int row = 0; row < 10; row++)
+        //    {
+        //        for (int col = 0; col < 5; col++)
+        //        {
+        //            coordinate.PositionX = row;
+        //            coordinate.PositionY = col;
+
+        //            AddNewBaloonToGameBoard(coordinate, (char)(random.Next(1, 5) + (int)'0'));
+        //        }
+        //    }
+        //}
+
         public void GenerateNewGame()
         {
-            Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
-            remainingBalloons = 50;
-            FillBlankGameBoard();
-            Random random = new Random();
+            this.remainingBalloons = 50;
+            Random randomGenerator = new Random();
 
-            Coordinates coordinate = new Coordinates();
-
-            for (int row = 0; row < 10; row++)
+            for (int row = 0; row < this.Height; row++)
             {
-                for (int col = 0; col < 5; col++)
+                for (int col = 0; col < this.Width; col++)
                 {
-                    coordinate.PositionX = row;
-                    coordinate.PositionY = col;
-
-                    AddNewBaloonToGameBoard(coordinate, (char)(random.Next(1, 5) + (int)'0'));
+                    this.balloons[row, col] = new Balloon(randomGenerator.Next(1, 5));
                 }
             }
         }
@@ -181,7 +197,7 @@ namespace BalloonsPops
             {
                 for (int col = 0; col < this.Width; col++)
                 {
-                    Console.Write(gameBoard[col, row]);
+                    Console.Write(this.balloons[row, col].Value);
                 }
 
                 Console.WriteLine();
@@ -190,63 +206,63 @@ namespace BalloonsPops
             Console.WriteLine();
         }
 
-        public void Shoot(Coordinates coordinate)
+        public void Shoot(int row, int col)
         {
-            char currentBaloon;
-            currentBaloon = Get(coordinate);
-            Coordinates tempCoordinates = new Coordinates();
+            int balloonValue;
+            balloonValue = this.balloons[row, col].Value;
+            int currentRow = 0, currentCol = 0;
 
-            if (currentBaloon < '1' || currentBaloon > '4')
+            if (balloonValue < 1 || balloonValue > 4)
             {
                 Console.WriteLine("Illegal move: cannot pop missing ballon!");
                 return;
             }
 
-            AddNewBaloonToGameBoard(coordinate, '.');
-            remainingBalloons--;
+            balloons[row, col].Value = 0;
+            this.remainingBalloons--;
 
-            tempCoordinates.PositionX = coordinate.PositionX - 1;
-            tempCoordinates.PositionY = coordinate.PositionY;
+            currentRow = row - 1;
+            currentCol = col;
 
-            while (currentBaloon == Get(tempCoordinates))
+            while (balloonValue == this.balloons[currentRow, currentCol].Value)
             {
-                AddNewBaloonToGameBoard(tempCoordinates, '.');
+                this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
-                tempCoordinates.PositionX--;
+                currentRow--;
             }
 
-            tempCoordinates.PositionX = coordinate.PositionX + 1; 
-            tempCoordinates.PositionY = coordinate.PositionY;
+            currentRow = row + 1; 
+            currentCol = col;
 
-            while (currentBaloon == Get(tempCoordinates))
+            while (balloonValue == this.balloons[currentRow, currentCol].Value)
             {
-                AddNewBaloonToGameBoard(tempCoordinates, '.');
+                this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
-                tempCoordinates.PositionX++;
+                currentRow++;
             }
 
-            tempCoordinates.PositionX = coordinate.PositionX;
-            tempCoordinates.PositionY = coordinate.PositionY - 1;
+            currentRow = row;
+            currentCol = col - 1;
 
-            while (currentBaloon == Get(tempCoordinates))
+            while (balloonValue == this.balloons[currentRow, currentCol].Value)
             {
-                AddNewBaloonToGameBoard(tempCoordinates, '.');
+                this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
-                tempCoordinates.PositionY--;
+                currentCol--;
             }
 
-            tempCoordinates.PositionX = coordinate.PositionX;
-            tempCoordinates.PositionY = coordinate.PositionY + 1;
+            currentRow = row;
+            currentCol = col + 1;
 
-            while (currentBaloon == Get(tempCoordinates))
+            while (balloonValue == this.balloons[currentRow, currentCol].Value)
             {
-                AddNewBaloonToGameBoard(tempCoordinates, '.');
+                this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
-                tempCoordinates.PositionY++;
+                currentCol++;
             }
 
             count++;
-            LandFlyingBaloons();
+            //LandFlyingBaloons();
         }
 
         private void Swap(Coordinates c, Coordinates c1)
