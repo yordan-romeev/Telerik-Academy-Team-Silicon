@@ -224,29 +224,38 @@ namespace BalloonsPops
             }
         }
 
-        public bool ReadInput(out bool IsCoordinates, ref Coordinates coordinates, ref Command command)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public void ReadInput(ref Coordinates coordinates, ref Command command, out InputType inputType)
         {
-            Console.Write("Enter a row and column: ");
-            string consoleInput = Console.ReadLine();
+            inputType = InputType.Invalid;
 
-            coordinates = new Coordinates();
-            command = new Command();
+            try
+            {
+                Console.Write("Enter action (coordinates or a command): ");
+                string consoleInput = Console.ReadLine();
 
-            if (Command.TryParse(consoleInput, ref command))
-            {
-                IsCoordinates = false;
-                return true;
+                coordinates = new Coordinates();
+                if (coordinates.ConvertCoordinates(consoleInput))
+                {
+                    inputType = InputType.Coordinates;
+                }
+
+                command = new Command();
+                if (command.ConvertCommand(consoleInput))
+                {
+                    inputType = InputType.Command;
+                }
             }
-            else if (Coordinates.TryParse(consoleInput, ref coordinates))
+            catch(ArgumentOutOfRangeException ex)
             {
-                IsCoordinates = true;
-                return true;
+                Console.WriteLine(ex.Message);
             }
-            else
-            {
-                IsCoordinates = false;
-                return false;
-            }
+
         }
     }
 }
