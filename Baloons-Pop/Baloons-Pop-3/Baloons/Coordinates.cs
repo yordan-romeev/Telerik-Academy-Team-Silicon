@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,93 +7,87 @@ namespace BalloonsPops
 {
     public class Coordinates
     {
-        private int x;
-        private int y;
+        private int positionX;
+        private int positionY;
 
-        public int X
+        public int PositionX
         {
             get
             {
-                return this.x;
+                return this.positionX;
             }
 
             set
             {
-                if (0 <= value && value <= 9)
+                if (0 > value || value > 9)
                 {
-                    this.x = value;
+                    throw new ArgumentOutOfRangeException("The position of X should be between 1 and 8");
                 }
+
+                this.positionX = value;
             }
         }
 
-        public int Y
+        public int PositionY
         {
             get
             {
-                return this.y;
+                return this.positionY;
             }
 
             set
             {
-                if (0 <= value && value <= 4)
+                if (0 > value || value > 4)
                 {
-                    this.y = value;
+                    throw new ArgumentOutOfRangeException("The position of Y should be between 1 and 3");
                 }
+
+                this.positionY = value;
             }
         }
 
-        public static bool TryParse(string input, ref Coordinates result)
+        public Coordinates() { }
+
+        public Coordinates(int x, int y)
+        {
+            this.PositionX = x;
+            this.PositionY = y;
+        }
+
+        /// <summary>
+        /// Converts input coordinates from string to integer values 
+        /// </summary>
+        /// <param name="input">String input value for coordinates</param>
+        /// <returns>Converted coordinate values</returns>
+        public bool ConvertCoordinates(string input)
         {
             char[] separators = { ' ', ',' };
 
-            string[] substrings = input.Split(separators);
+            string[] coordinates = input.Split(separators);
 
-            if (substrings.Count<string>() != 2)
+            if (coordinates.Count<string>() != 2)
             {
-                Console.WriteLine("Invalid move or command!");
                 return false;
             }
 
-            string coordinate = substrings[1].Trim();
-            int x;
-            if (int.TryParse(coordinate, out x))
+            string xCoordinate = coordinates[0].Trim();
+            int positionX;
+            if (!int.TryParse(xCoordinate, out positionX)) 
             {
-                if (x >= 0 && x <= 9)
-                {
-                    result.X = x;
-                }
-                else
-                {
-                    Console.WriteLine("Wrong x coordinates");
-                    return false;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid move or command!");
                 return false;
             }
 
-            coordinate = substrings[0].Trim();
-            int y;
-            if (int.TryParse(coordinate, out y))
+
+            string yCoordinate = coordinates[1].Trim();
+            int positionY;
+            if (!int.TryParse(yCoordinate, out positionY))
             {
-                if (y >= 0 && y <= 4)
-                {
-                    result.Y = y;
-                }
-                else
-                {
-                    Console.WriteLine("Wrong y coordinates");
-                    return false;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid move or command!");
                 return false;
             }
 
+            this.positionX = positionX;
+            this.PositionY = positionY;
+            
             return true;
         }
     }
