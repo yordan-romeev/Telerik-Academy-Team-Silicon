@@ -21,7 +21,7 @@ namespace BalloonsPops
             {
                 if (0 > value || value > 9)
                 {
-                    throw new ArgumentOutOfRangeException("The position of X should be between 1 and 8");
+                    throw new ArgumentOutOfRangeException("The position of X should be between 0 and 9");
                 }
 
                 this.positionX = value;
@@ -39,7 +39,7 @@ namespace BalloonsPops
             {
                 if (0 > value || value > 4)
                 {
-                    throw new ArgumentOutOfRangeException("The position of Y should be between 1 and 3");
+                    throw new ArgumentOutOfRangeException("The position of Y should be between 0 and 4");
                 }
 
                 this.positionY = value;
