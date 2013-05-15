@@ -77,7 +77,7 @@ namespace BalloonsPops
                 {
                     coordinate.PositionX = row;
                     coordinate.PositionY = coll;
-
+                    
                     AddNewBaloonToGameBoard(coordinate, (char)(random.Next(1, 5) + (int)'0'));
                 }
             }
@@ -121,7 +121,7 @@ namespace BalloonsPops
                 }
             }
 
-            //printing firs row 
+            //printing the beginning of the first row
             for (int i = 0; i < 4; i++)
             {
                 gameBoard[i, 0] = ' ';
@@ -129,14 +129,14 @@ namespace BalloonsPops
 
             char counter = '0';
 
-            for (int i = 4; i < 25; i++)
+            for (int i = 4; i < this.Width; i++)
             {
                 if ((i % 2 == 0) && counter <= '9') gameBoard[i, 0] = (char)counter++;
                 else gameBoard[i, 0] = ' ';
             }
 
             //printing second row
-            for (int i = 3; i < 24; i++)
+            for (int i = 3; i < this.Width - 1; i++)
             {
                 gameBoard[i, 1] = '-';
             }
@@ -144,7 +144,7 @@ namespace BalloonsPops
             //printing left game board wall
             counter = '0';
 
-            for (int i = 2; i < 8; i++)
+            for (int i = 2; i < this.Height; i++)
             {
                 if (counter <= '4')
                 {
@@ -157,15 +157,15 @@ namespace BalloonsPops
             }
 
             //printing down game board wall
-            for (int i = 3; i < 24; i++)
+            for (int i = 3; i < this.Width - 1; i++)
             {
                 gameBoard[i, 7] = '-';
             }
 
             //printing right game board wall
-            for (int i = 2; i < 7; i++)
+            for (int i = 2; i < this.Height - 1; i++)
             {
-                gameBoard[24, i] = '|';
+                gameBoard[this.Width - 1, i] = '|';
             }
         }
 
