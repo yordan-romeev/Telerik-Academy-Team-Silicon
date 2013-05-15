@@ -10,7 +10,7 @@ namespace BalloonsPops
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
         private List<Person> topScoreList = new List<Person>();
-         private const PATH = @"..\..\TopScore.txt";
+         private const string PATH = @"..\..\TopScore.txt";
 
         public bool IsTopScore(Person person)
         {
