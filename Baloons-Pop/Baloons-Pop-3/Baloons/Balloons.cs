@@ -9,9 +9,9 @@ namespace BalloonsPops
     {
         public static void Main(string[] args)
         {
-            GameBoard gameBoard = new GameBoard(25, 8);
-            gameBoard.GenerateNewGame();
-            Console.WriteLine(gameBoard.ToString());
+            Engine gameEngine = new Engine();
+            gameEngine.NewGame();
+            Console.WriteLine(gameEngine.ToString());
             TopScore topScore = new TopScore();
 
             topScore.OpenTopScoreList();
@@ -20,14 +20,14 @@ namespace BalloonsPops
             Coordinates coordinates = new Coordinates(); ;
             Command command = new Command();
 
-            while (gameBoard.RemainingBaloons > 0)
+            while (gameEngine.RemainingBalloons > 0)
             {
-                gameBoard.ReadInput(ref coordinates, ref command, out inputType);
+                gameEngine.ReadInput(ref coordinates, ref command, out inputType);
                 switch (inputType)
                 {
                     case InputType.Coordinates:
-                        gameBoard.Shoot(coordinates.PositionX, coordinates.PositionY);
-                        Console.WriteLine(gameBoard.ToString());
+                        gameEngine.Shoot(coordinates.PositionX, coordinates.PositionY);
+                        Console.WriteLine(gameEngine.ToString());
                         break;
                     case InputType.Command:
                         switch (command.Type)
@@ -36,8 +36,8 @@ namespace BalloonsPops
                                 topScore.PrintScoreList();
                                 break;
                             case CommandType.Restart:
-                                gameBoard.GenerateNewGame();
-                                Console.WriteLine(gameBoard.ToString());
+                                gameEngine.NewGame();
+                                Console.WriteLine(gameEngine.ToString());
                                 break;
                             case CommandType.Exit:
                                 return;
@@ -49,7 +49,7 @@ namespace BalloonsPops
                 }
             }
 
-            Person player = new Person(gameBoard.ShootCounter);
+            Person player = new Person(gameEngine.ShootCounter);
 
             if (topScore.IsTopScore(player))
             {

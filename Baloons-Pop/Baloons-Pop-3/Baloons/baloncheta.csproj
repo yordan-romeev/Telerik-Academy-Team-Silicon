@@ -48,6 +48,7 @@
     <Compile Include="CommandType.cs" />
     <Compile Include="Coordinates.cs" />
     <Content Include="TopScore.txt" />
+    <Compile Include="Engine.cs" />
     <Compile Include="GameBoard.cs" />
     <Compile Include="InputType.cs" />
     <Compile Include="Person.cs" />
