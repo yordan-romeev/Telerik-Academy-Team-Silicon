@@ -138,21 +138,6 @@ namespace BalloonsPops
             }
         }
 
-        //public void PrintGameBoard()
-        //{
-        //    for (int row = 0; row < this.Height; row++)
-        //    {
-        //        for (int col = 0; col < this.Width; col++)
-        //        {
-        //            Console.Write(this.balloons[row, col].Value);
-        //        }
-
-        //        Console.WriteLine();
-        //    }
-
-        //    Console.WriteLine();
-        //}
-
         public void Shoot(int row, int col)
         {
             int balloonValue;
@@ -282,36 +267,37 @@ namespace BalloonsPops
 
         public override string ToString()
         {
-            Console.Write("  ");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("  ");
 
             for (int i = 0; i < this.Width; i++)
             {
-                Console.Write("{0, 3}", i);
+                sb.Append(String.Format("{0, 3}", i));
             }
 
-            Console.WriteLine();
-            Console.Write("  ");
+            sb.Append(Environment.NewLine);
+            sb.Append("  ");
 
             for (int i = 0; i < this.Width; i++)
             {
-                Console.Write("{0, 3}", "~");
+                sb.Append(String.Format("{0, 3}", "~"));
             }
 
-            Console.WriteLine();
+            sb.Append(Environment.NewLine);
 
             for (int row = 0; row < this.Height; row++)
             {
-                Console.Write(row + "|");
+                sb.Append(row + "|");
 
                 for (int i = 0; i < this.Width; i++)
                 {
-                    Console.Write("{0, 3}", this.balloons[row, i].Value);
+                    sb.Append(String.Format("{0, 3}", this.balloons[row, i].Value));
                 }
 
-                Console.WriteLine();
+                sb.Append(Environment.NewLine);
             }
 
-            return string.Empty;
+            return sb.ToString();
         }
     }
 }
