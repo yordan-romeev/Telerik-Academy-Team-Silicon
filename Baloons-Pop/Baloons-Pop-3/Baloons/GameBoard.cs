@@ -171,7 +171,7 @@ namespace BalloonsPops
             currentRow = row - 1;
             currentCol = col;
 
-            while (balloonValue == this.balloons[currentRow, currentCol].Value)
+            while (currentRow >= 0 && balloonValue == this.balloons[currentRow, currentCol].Value)
             {
                 this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
@@ -181,7 +181,7 @@ namespace BalloonsPops
             currentRow = row + 1; 
             currentCol = col;
 
-            while (balloonValue == this.balloons[currentRow, currentCol].Value)
+            while (currentRow < this.Height && balloonValue == this.balloons[currentRow, currentCol].Value)
             {
                 this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
@@ -191,7 +191,7 @@ namespace BalloonsPops
             currentRow = row;
             currentCol = col - 1;
 
-            while (balloonValue == this.balloons[currentRow, currentCol].Value)
+            while (currentCol >= 0 && balloonValue == this.balloons[currentRow, currentCol].Value)
             {
                 this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
@@ -201,7 +201,7 @@ namespace BalloonsPops
             currentRow = row;
             currentCol = col + 1;
 
-            while (balloonValue == this.balloons[currentRow, currentCol].Value)
+            while (currentCol < this.Width && balloonValue == this.balloons[currentRow, currentCol].Value)
             {
                 this.balloons[currentRow, currentCol].Value = 0;
                 remainingBalloons--;
