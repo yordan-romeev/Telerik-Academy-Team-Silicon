@@ -13,6 +13,7 @@ namespace BalloonsPops
         private int counter;
         private Balloon[,] board;
         private bool gameOver;
+        private bool exit;
 
         private int BoardWidth
         {
@@ -84,9 +85,12 @@ namespace BalloonsPops
                 CommandType commandType = CommandParser.GetCommandType(currentCommand);
 
                 ExecuteCommand(commandType, currentCommand);
+
+                if (this.exit)
+                {
+                    return;
+                }
             }
-
-
         }
 
         private void ExecuteCommand(CommandType currentCommand, string command)
@@ -96,10 +100,13 @@ namespace BalloonsPops
                 case CommandType.TopScore:
                     break;
                 case CommandType.Restart:
+                    NewGame();
                     break;
                 case CommandType.Exit:
+                    this.exit = true;
                     break;
                 case CommandType.Invalid:
+                    Console.WriteLine("Invalid command!");
                     break;
                 case CommandType.Coordinates:
                     Coordinates coordinates = CommandParser.ParseCoordinates(command);
