@@ -14,6 +14,7 @@ namespace BalloonsPops
         private Balloon[,] board;
         private bool gameOver;
         private bool exit;
+        ScoreManager scoreManager;
 
         private int BoardWidth
         {
@@ -59,6 +60,7 @@ namespace BalloonsPops
 
         public Engine()
         {
+            this.scoreManager = new ScoreManager();
             this.BoardWidth = 10;
             this.BoardHeight = 4;
             this.counter = 0;
@@ -68,6 +70,7 @@ namespace BalloonsPops
 
         public Engine(int width, int height)
         {
+            this.scoreManager = new ScoreManager();
             this.BoardWidth = width;
             this.BoardHeight = height;
             this.counter = 0;
@@ -98,6 +101,7 @@ namespace BalloonsPops
             switch (currentCommand)
             {
                 case CommandType.TopScore:
+                    scoreManager.PrintScoreList();
                     break;
                 case CommandType.Restart:
                     NewGame();

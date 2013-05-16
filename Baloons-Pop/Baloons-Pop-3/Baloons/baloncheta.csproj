@@ -55,7 +55,7 @@
     <Compile Include="Person.cs" />
     <Compile Include="PersonScoreComparer.cs" />
     <Compile Include="Balloons.cs" />
-    <Compile Include="TopScore.cs" />
+    <Compile Include="ScoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
