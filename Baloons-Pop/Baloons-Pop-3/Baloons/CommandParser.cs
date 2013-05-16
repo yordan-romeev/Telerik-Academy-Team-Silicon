@@ -49,12 +49,12 @@ namespace BalloonsPops
             }
             else
             {
-                if (!int.TryParse(coordinates[0], x))
+                if (!int.TryParse(coordinates[0], out x))
                 {
                     isCoordinates = false;
                 }
 
-                if (!int.TryParse(coordinates[1], y))
+                if (!int.TryParse(coordinates[1], out y))
                 {
                     isCoordinates = false;
                 }
@@ -66,7 +66,7 @@ namespace BalloonsPops
         public static Coordinates ParseCoordinates(string coordinatesAsString)
         {
             char[] separators = { ' ', ',' };
-            string coordinatesArray = coordinatesAsString.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] coordinatesArray = coordinatesAsString.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             int x = int.Parse(coordinatesArray[0]);
             int y = int.Parse(coordinatesArray[1]);

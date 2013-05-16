@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Balloon.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CommandParser.cs" />
     <Compile Include="CommandType.cs" />
     <Compile Include="Coordinates.cs" />
     <Content Include="TopScore.txt" />

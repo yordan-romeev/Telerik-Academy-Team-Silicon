@@ -80,12 +80,16 @@ namespace BalloonsPops
 
             while (true)
             {
-                CommandType currentCommand = ReadInput();
-                ExecuteCommand(currentCommand);
+                string currentCommand = ReadInput();
+                CommandType commandType = CommandParser.GetCommandType(currentCommand);
+
+                ExecuteCommand(commandType, currentCommand);
             }
+
+
         }
 
-        private void ExecuteCommand(CommandType currentCommand)
+        private void ExecuteCommand(CommandType currentCommand, string command)
         {
             switch (currentCommand)
             {
@@ -98,6 +102,8 @@ namespace BalloonsPops
                 case CommandType.Invalid:
                     break;
                 case CommandType.Coordinates:
+                    Coordinates coordinates = CommandParser.ParseCoordinates(command);
+                    Shoot(coordinates.PositionX, coordinates.PositionY);
                     break;
                 default:
                     break;
@@ -117,6 +123,8 @@ namespace BalloonsPops
                     this.board[row, col] = new Balloon(randomGenerator.Next(1, 5));
                 }
             }
+
+            PrintGameBoard();
         }
 
         public void Shoot(int row, int col)
@@ -176,6 +184,7 @@ namespace BalloonsPops
 
             this.counter++;
             //LandFlyingBaloons();
+            PrintGameBoard();
         }
 
 
@@ -211,17 +220,15 @@ namespace BalloonsPops
         /// <param name="coordinates"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public CommandType ReadInput()
+        public string  ReadInput()
         {
             Console.Write("Enter action (coordinates or a command): ");
             string consoleInput = Console.ReadLine();
 
-            CommandType commandType = CommandParser.GetCommandType(consoleInput);
-
-            return commandType;
+            return consoleInput;
         }
 
-        public override string ToString()
+        private void PrintGameBoard()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("  ");
@@ -253,7 +260,7 @@ namespace BalloonsPops
                 sb.Append(Environment.NewLine);
             }
 
-            return sb.ToString();
+            Console.WriteLine(sb.ToString());
         }
     }
 }
