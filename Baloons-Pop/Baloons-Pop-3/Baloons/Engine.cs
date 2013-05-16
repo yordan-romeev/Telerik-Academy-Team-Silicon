@@ -10,7 +10,7 @@ namespace BalloonsPops
         private int boardWidth;
         private int boardHeight;
         private int remainingBalloons;
-        private int counter;
+        private int numberOfShootings;
         private Balloon[,] board;
         private bool gameOver;
         private bool exit;
@@ -54,7 +54,7 @@ namespace BalloonsPops
         {
             get
             {
-                return this.counter;
+                return this.numberOfShootings;
             }
         }
 
@@ -63,7 +63,7 @@ namespace BalloonsPops
             this.scoreManager = new ScoreManager();
             this.BoardWidth = 10;
             this.BoardHeight = 4;
-            this.counter = 0;
+            this.numberOfShootings = 0;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             this.board = new Balloon[this.BoardHeight, this.BoardWidth];
         }
@@ -73,7 +73,7 @@ namespace BalloonsPops
             this.scoreManager = new ScoreManager();
             this.BoardWidth = width;
             this.BoardHeight = height;
-            this.counter = 0;
+            this.numberOfShootings = 0;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             this.board = new Balloon[this.BoardHeight, this.BoardWidth];
         }
@@ -92,6 +92,11 @@ namespace BalloonsPops
                 if (this.exit)
                 {
                     return;
+                }
+
+                if (this.gameOver)
+                {
+                    SaveScore();
                 }
             }
         }
@@ -118,6 +123,18 @@ namespace BalloonsPops
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void SaveScore()
+        {
+            Person player = new Person(this.numberOfShootings);
+
+            if (this.scoreManager.IsTopScore(player))
+            {
+                Console.Write("Enter your name: ");
+                string playerName = Console.ReadLine();
+                this.scoreManager.AddToTopScoreList(player);
             }
         }
 
@@ -193,37 +210,60 @@ namespace BalloonsPops
                 currentCol++;
             }
 
-            this.counter++;
-            //LandFlyingBaloons();
+            this.numberOfShootings++;
+            LandFlyingBaloons();
+
+            if (this.remainingBalloons <= 0)
+            {
+                this.gameOver = true;
+            }
+
             PrintGameBoard();
         }
 
 
-        //private void LandFlyingBaloons()
-        //{
-        //    Coordinates c = new Coordinates();
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        for (int j = 0; j <= 4; j++)
-        //        {
-        //            c.PositionX = i;
-        //            c.PositionY = j;
-        //            if (Get(c) == '.')
-        //            {
-        //                for (int k = j; k > 0; k--)
-        //                {
-        //                    Coordinates tempCoordinates = new Coordinates();
-        //                    Coordinates tempCoordinates1 = new Coordinates();
-        //                    tempCoordinates.PositionX = i;
-        //                    tempCoordinates.PositionY = k;
-        //                    tempCoordinates1.PositionX = i;
-        //                    tempCoordinates1.PositionY = k - 1;
-        //                    //Swap(tempCoordinates, tempCoordinates1);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        private void LandFlyingBaloons()
+        {
+            for (int col = 0; col < this.BoardWidth; col++)
+            {
+                LandColumn(col);
+            }
+        }
+
+        private void LandColumn(int col)
+        {
+            for (int row = this.BoardHeight - 1; row > 0; row--)
+            {
+                if (this.board[row, col].Value == 0)
+                {
+                    int fallingBalloonIndex = FindFallingBalloonIndex(row, col);
+
+                    if (fallingBalloonIndex >= 0)
+                    {
+                        while (fallingBalloonIndex >= 0)
+                        {
+                            this.board[row, col].Value = this.board[fallingBalloonIndex, col].Value;
+                            this.board[fallingBalloonIndex, col].Value = 0;
+                            row--;
+                            fallingBalloonIndex--;
+                        }
+                    }
+                }
+            }
+        }
+
+        private int FindFallingBalloonIndex(int zeroElementRowIndex, int col)
+        {
+            for (int row = zeroElementRowIndex - 1; row >= 0; row--)
+            {
+                if (this.board[row, col].Value != 0)
+                {
+                    return row;
+                }
+            }
+
+            return -1;
+        }
 
         /// <summary>
         /// 
