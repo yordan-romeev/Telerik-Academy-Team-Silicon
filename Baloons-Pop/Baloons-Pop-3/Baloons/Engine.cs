@@ -59,6 +59,16 @@ namespace BalloonsPops
         {
             this.BoardWidth = 10;
             this.BoardHeight = 4;
+            this.counter = 0;
+            this.remainingBalloons = this.BoardWidth * this.BoardHeight;
+            this.board = new Balloon[this.BoardHeight, this.BoardWidth];
+        }
+
+        public Engine(int width, int height)
+        {
+            this.BoardWidth = width;
+            this.BoardHeight = height;
+            this.counter = 0;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             this.board = new Balloon[this.BoardHeight, this.BoardWidth];
         }
