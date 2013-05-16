@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BalloonsPops
 {
-    public class TopScore
+    public class ScoreManager
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
         private List<Person> topScoreList = new List<Person>();
