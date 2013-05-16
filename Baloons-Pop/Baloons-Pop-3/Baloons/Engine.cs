@@ -303,9 +303,16 @@ namespace BalloonsPops
             {
                 sb.Append(row + "|");
 
-                for (int i = 0; i < this.BoardWidth; i++)
+                for (int col = 0; col < this.BoardWidth; col++)
                 {
-                    sb.Append(String.Format("{0, 3}", this.board[row, i].Value));
+                    if (this.board[row, col].Value == 0)
+                    {
+                        sb.Append(String.Format("{0, 3}", "."));
+                    }
+                    else
+                    {
+                        sb.Append(String.Format("{0, 3}", this.board[row, col].Value));
+                    }
                 }
 
                 sb.Append(Environment.NewLine);
