@@ -17,7 +17,7 @@ namespace BalloonsPops
             topScore.OpenTopScoreList();
 
             InputType inputType;
-            Coordinates coordinates = new Coordinates(); ;
+            Coordinates coordinates = new Coordinates();
             Command command = new Command();
 
             while (gameEngine.RemainingBalloons > 0)

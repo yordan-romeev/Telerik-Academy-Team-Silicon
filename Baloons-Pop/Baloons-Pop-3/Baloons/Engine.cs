@@ -12,6 +12,7 @@ namespace BalloonsPops
         private int remainingBalloons;
         private int counter;
         private Balloon[,] board;
+        private bool gameOver;
 
         private int BoardWidth
         {
@@ -73,8 +74,39 @@ namespace BalloonsPops
             this.board = new Balloon[this.BoardHeight, this.BoardWidth];
         }
 
+        public void Run()
+        {
+            NewGame();
+
+            while (true)
+            {
+                CommandType currentCommand = ReadInput();
+                ExecuteCommand(currentCommand);
+            }
+        }
+
+        private void ExecuteCommand(CommandType currentCommand)
+        {
+            switch (currentCommand)
+            {
+                case CommandType.TopScore:
+                    break;
+                case CommandType.Restart:
+                    break;
+                case CommandType.Exit:
+                    break;
+                case CommandType.Invalid:
+                    break;
+                case CommandType.Coordinates:
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void NewGame()
         {
+            this.gameOver = false;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             Random randomGenerator = new Random();
 
@@ -179,33 +211,14 @@ namespace BalloonsPops
         /// <param name="coordinates"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public void ReadInput(ref Coordinates coordinates, ref Command command, out InputType inputType)
+        public CommandType ReadInput()
         {
-            inputType = InputType.Invalid;
+            Console.Write("Enter action (coordinates or a command): ");
+            string consoleInput = Console.ReadLine();
 
-            try
-            {
-                Console.Write("Enter action (coordinates or a command): ");
-                string consoleInput = Console.ReadLine();
+            CommandType commandType = CommandParser.GetCommandType(consoleInput);
 
-                coordinates = new Coordinates();
-                if (coordinates.ConvertCoordinates(consoleInput))
-                {
-                    inputType = InputType.Coordinates;
-                }
-
-                command = new Command();
-                if (command.ConvertCommand(consoleInput))
-                {
-                    inputType = InputType.Command;
-                }
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
+            return commandType;
         }
 
         public override string ToString()

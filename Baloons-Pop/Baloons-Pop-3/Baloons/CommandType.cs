@@ -9,6 +9,8 @@ namespace BalloonsPops
     {
         TopScore,
         Restart,
-        Exit
+        Exit,
+        Invalid,
+        Coordinates
     }
 }
