@@ -16,7 +16,7 @@ namespace BalloonsPops
                 return this.value;
             }
 
-            set
+            private set
             {
                 this.value = value;
             }
@@ -25,6 +25,11 @@ namespace BalloonsPops
         public Balloon(int value)
         {
             this.Value = value;
+        }
+
+        public void Pop()
+        {
+            this.Value = 0;
         }
     }
 }
