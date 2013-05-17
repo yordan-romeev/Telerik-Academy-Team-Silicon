@@ -94,8 +94,14 @@ namespace BalloonsPops
                 string currentCommand = ReadInput();
                 CommandType commandType = CommandParser.GetCommandType(currentCommand);
 
-                ExecuteCommand(commandType, currentCommand);
-
+                try
+                {
+                    ExecuteCommand(commandType, currentCommand);
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 if (this.exit)
                 {
                     this.scoreManager.SaveTopScoreList();
@@ -104,6 +110,7 @@ namespace BalloonsPops
 
                 if (this.gameOver)
                 {
+                    Console.WriteLine("Congratulations, you've won the game!");
                     SaveScore();
                 }
             }
@@ -128,8 +135,8 @@ namespace BalloonsPops
                 case CommandType.Coordinates:
                     Coordinates coordinates = CommandParser.ParseCoordinates(command);
 
-                    if (coordinates.PositionX < 0 || this.BoardWidth <= coordinates.PositionX ||
-                        coordinates.PositionY < 0 || this.BoardHeight <= coordinates.PositionY)
+                    if (coordinates.PositionX < 0 || this.BoardHeight <= coordinates.PositionX ||
+                        coordinates.PositionY < 0 || this.BoardWidth <= coordinates.PositionY)
                     {
                         throw new ArgumentOutOfRangeException(
                             String.Format("First coordinate must be in [0, {0}) range, second in [0, {1})", 
@@ -237,12 +244,12 @@ namespace BalloonsPops
 
             this.numberOfShootings++;
             LandFlyingBaloons();
-
-            if (this.remainingBalloons <= 0)
+            Console.WriteLine(this.RemainingBalloons);
+            if (this.RemainingBalloons <= 0)
             {
                 this.gameOver = true;
             }
-
+            
             PrintGameBoard();
         }
 
@@ -267,8 +274,16 @@ namespace BalloonsPops
                     {
                         while (fallingBalloonIndex >= 0)
                         {
-                            this.board[row, col].Value = this.board[fallingBalloonIndex, col].Value;
-                            this.board[fallingBalloonIndex, col].Value = 0;
+                            if (this.board[fallingBalloonIndex, col].Value != 0)
+                            {
+                                this.board[row, col].Value = this.board[fallingBalloonIndex, col].Value;
+                            }
+                            else
+                            {
+                                this.board[row, col].Pop();
+                            }
+
+                            this.board[fallingBalloonIndex, col].Pop();
                             row--;
                             fallingBalloonIndex--;
                         }

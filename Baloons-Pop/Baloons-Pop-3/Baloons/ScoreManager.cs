@@ -9,8 +9,13 @@ namespace BalloonsPops
     public class ScoreManager
     {
         public const int MAX_TOP_SCORE_COUNT = 5;
-        private List<Person> topScoreList = new List<Person>();
+        private List<Person> topScoreList;
         private const string PATH = @"..\..\TopScore.txt";
+
+        public ScoreManager()
+        {
+            this.topScoreList = new List<Person>();
+        }
 
         public bool IsTopScore(Person person)
         {
@@ -18,7 +23,7 @@ namespace BalloonsPops
             {
                 PersonScoreComparer comparer = new PersonScoreComparer();
                 this.topScoreList.Sort(comparer);
-                if (this.topScoreList[MAX_TOP_SCORE_COUNT - 1] > person)
+                if (this.topScoreList[MAX_TOP_SCORE_COUNT - 1] > person || this.topScoreList[MAX_TOP_SCORE_COUNT - 1] == person)
                 {
                     return true;
                 }
@@ -70,7 +75,7 @@ namespace BalloonsPops
             if (this.topScoreList.Count > 0)
             {
                 string toWrite = string.Empty;
-                using (StreamWriter topScoreStreamWriter = new StreamWriter(PATH))
+                using (StreamWriter topScoreStreamWriter = new StreamWriter(PATH, false))
                 {
                     for (int i = 0; i < this.topScoreList.Count; i++)
                     {
