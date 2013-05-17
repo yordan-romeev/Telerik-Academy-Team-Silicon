@@ -54,5 +54,17 @@ namespace TestBalloonPops
 
             Assert.AreEqual(CommandType.TopScore, commandType);
         }
+
+        [TestMethod]
+        public void TestParseCoordinates()
+        {
+            string coordinatesAsString = "2 3";
+            Coordinates expected = new Coordinates(2, 3);
+            Coordinates actual = CommandParser.ParseCoordinates(coordinatesAsString);
+
+            Assert.AreEqual(expected.Row, actual.Row);
+            Assert.AreEqual(expected.Column, actual.Column);
+        }
+
     }
 }

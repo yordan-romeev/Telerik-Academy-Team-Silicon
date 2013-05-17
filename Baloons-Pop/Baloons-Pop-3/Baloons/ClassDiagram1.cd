@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BalloonsPops.Balloon" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Balloon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.BalloonsPop" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>BalloonsPop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.CommandParser" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAAACAA=</HashCode>
+      <FileName>CommandParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.Coordinates" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAACQAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Coordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.Engine" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QICAgECIgAgABAAIAAgAAAACBAAIAAAAIAAAACAAQIY=</HashCode>
+      <FileName>Engine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.Person" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAACIAgQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalloonsPops.PersonScoreComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>PersonScoreComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BalloonsPops.ScoreManager" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAEAAAAAAAABIAAAABEAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoreManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BalloonsPops.CommandType" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAIAAAAAAAEAA=</HashCode>
+      <FileName>CommandType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -189,6 +189,9 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Starts new game
+        /// </summary>
         private void NewGame()
         {
             this.gameOver = false;
@@ -331,13 +334,7 @@ namespace BalloonsPops
             return -1;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="coordinates"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public string  ReadInput()
+        private string  ReadInput()
         {
             if (this.gameOver)
             {
