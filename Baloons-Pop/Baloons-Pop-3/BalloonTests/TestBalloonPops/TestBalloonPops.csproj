@@ -55,6 +55,8 @@
     <Compile Include="TestCommandParser.cs" />
     <Compile Include="TestPersonClass.cs" />
     <Compile Include="TestPersonScoreComparer.cs" />
+    <Compile Include="TestEngine.cs" />
+    <Compile Include="TestScoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Baloons\BalloonPops.csproj">

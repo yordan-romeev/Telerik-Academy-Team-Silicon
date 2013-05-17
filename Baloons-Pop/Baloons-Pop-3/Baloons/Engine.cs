@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -16,7 +15,7 @@ namespace BalloonsPops
         private bool exit;
         ScoreManager scoreManager;
 
-        private int BoardWidth
+        public int BoardWidth
         {
             get
             {
@@ -29,7 +28,7 @@ namespace BalloonsPops
             }
         }
 
-        private int BoardHeight
+        public int BoardHeight
         {
             get
             {

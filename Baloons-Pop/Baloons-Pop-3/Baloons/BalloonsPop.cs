@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BalloonsPops
 {
@@ -9,7 +7,7 @@ namespace BalloonsPops
     {
         public static void Main(string[] args)
         {
-            Engine gameEngine = new Engine(2, 3);
+            Engine gameEngine = new Engine(8, 4);
             gameEngine.Run();
         }
     }
