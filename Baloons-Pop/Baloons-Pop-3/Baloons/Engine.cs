@@ -102,6 +102,7 @@ namespace BalloonsPops
                 {
                     Console.WriteLine(ex.Message);
                 }
+
                 if (this.exit)
                 {
                     this.scoreManager.SaveTopScoreList();
@@ -170,7 +171,7 @@ namespace BalloonsPops
 
         public void NewGame()
         {
-            this.scoreManager.OpenTopScoreList();
+            this.scoreManager.LoadTopScoreList();
             this.gameOver = false;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             this.NumberOfShootings = 0;

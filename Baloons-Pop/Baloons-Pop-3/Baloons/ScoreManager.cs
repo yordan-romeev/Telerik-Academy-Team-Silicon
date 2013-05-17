@@ -41,13 +41,13 @@ namespace BalloonsPops
             this.topScoreList.Add(person);
             PersonScoreComparer comparer = new PersonScoreComparer();
             this.topScoreList.Sort(comparer);
-            while (this.topScoreList.Count > 5)
+            while (this.topScoreList.Count > MAX_TOP_SCORE_COUNT)
             {
-                this.topScoreList.RemoveAt(5);
+                this.topScoreList.RemoveAt(MAX_TOP_SCORE_COUNT);
             }
         }
 
-        public void OpenTopScoreList()
+        public void LoadTopScoreList()
         {
             using (StreamReader topScoreStreamReader = new StreamReader(PATH))
             {
