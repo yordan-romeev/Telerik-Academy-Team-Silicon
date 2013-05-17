@@ -174,8 +174,6 @@ namespace BalloonsPops
                 player.Name = playerName;
                 this.scoreManager.AddToTopScoreList(player);
             }
-
-            this.gameOver = false;
         }
 
         public void NewGame()
@@ -322,7 +320,15 @@ namespace BalloonsPops
         /// <returns></returns>
         public string  ReadInput()
         {
-            Console.Write("Enter a row and column: ");
+            if (this.gameOver)
+            {
+                Console.Write("Enter command: ");
+            }
+            else
+            {
+                Console.Write("Enter a row and column: ");
+            }
+
             string consoleInput = Console.ReadLine();
 
             return consoleInput;
