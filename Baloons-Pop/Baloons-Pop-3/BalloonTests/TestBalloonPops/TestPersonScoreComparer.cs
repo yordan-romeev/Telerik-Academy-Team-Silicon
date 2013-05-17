@@ -12,8 +12,9 @@ namespace TestBalloonPops
         {
             Person firstPerson = new Person("Pesho", 15);
             Person secondPerson = new Person("Vanya", 10);
+            PersonScoreComparer personScoreComparer = new PersonScoreComparer();
 
-            int result = PersonScoreComparer.Compare(firstPerson, secondPerson);
+            int result = personScoreComparer.Compare(firstPerson, secondPerson);
 
             Assert.AreEqual(1, result);
         }
@@ -23,8 +24,9 @@ namespace TestBalloonPops
         {
             Person firstPerson = new Person("Pesho", 15);
             Person secondPerson = new Person("Vanya", 15);
+            PersonScoreComparer personScoreComparer = new PersonScoreComparer();
 
-            int result = PersonScoreComparer.Compare(firstPerson, secondPerson);
+            int result = personScoreComparer.Compare(firstPerson, secondPerson);
 
             Assert.AreEqual(0, result);
         }
@@ -34,8 +36,9 @@ namespace TestBalloonPops
         {
             Person firstPerson = new Person("Pesho", 5);
             Person secondPerson = new Person("Vanya", 15);
+            PersonScoreComparer personScoreComparer = new PersonScoreComparer();
 
-            int result = PersonScoreComparer.Compare(firstPerson, secondPerson);
+            int result = personScoreComparer.Compare(firstPerson, secondPerson);
 
             Assert.AreEqual(-1, result);
         }

@@ -7,41 +7,41 @@ namespace BalloonsPops
 {
     public class Coordinates
     {
-        private int positionX;
-        private int positionY;
+        private int row;
+        private int column;
 
-        public int PositionX
+        public int Row
         {
             get
             {
-                return this.positionX;
+                return this.row;
             }
 
             private set
             {
 
-                this.positionX = value;
+                this.row = value;
             }
         }
 
-        public int PositionY
+        public int Column
         {
             get
             {
-                return this.positionY;
+                return this.column;
             }
 
             private set
             {
 
-                this.positionY = value;
+                this.column = value;
             }
         }
 
         public Coordinates(int x, int y)
         {
-            this.PositionX = x;
-            this.PositionY = y;
+            this.Row = x;
+            this.Column = y;
         }
     }
 }

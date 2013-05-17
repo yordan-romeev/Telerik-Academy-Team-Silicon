@@ -8,11 +8,6 @@ namespace BalloonsPops
     public class PersonScoreComparer : IComparer<Person>
     {
 
-        int IComparer<Person>.Compare(Person x, Person y)
-        {
-            // TODO: Implement this method
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Compares two people by their score.
@@ -20,7 +15,7 @@ namespace BalloonsPops
         /// <param name="firstPerson">first person</param>
         /// <param name="secondPerson">second person</param>
         /// <returns></returns>
-        public static int Compare(Person firstPerson, Person secondPerson)
+        public int Compare(Person firstPerson, Person secondPerson)
         {
             return firstPerson.Score.CompareTo(secondPerson.Score);
         }

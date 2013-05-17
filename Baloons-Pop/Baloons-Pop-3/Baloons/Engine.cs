@@ -145,8 +145,8 @@ namespace BalloonsPops
                 case CommandType.Coordinates:
                     Coordinates coordinates = CommandParser.ParseCoordinates(command);
 
-                    if (coordinates.PositionX < 0 || this.BoardHeight <= coordinates.PositionX ||
-                        coordinates.PositionY < 0 || this.BoardWidth <= coordinates.PositionY)
+                    if (coordinates.Row < 0 || this.BoardHeight <= coordinates.Row ||
+                        coordinates.Column < 0 || this.BoardWidth <= coordinates.Column)
                     {
                         throw new ArgumentOutOfRangeException(
                             String.Format("First coordinate must be in [0, {0}) range, second in [0, {1})", 
@@ -155,7 +155,7 @@ namespace BalloonsPops
                     }
                     else
                     {
-                        Shoot(coordinates.PositionX, coordinates.PositionY);
+                        Shoot(coordinates.Row, coordinates.Column);
                     }
                     break;
                 default:
