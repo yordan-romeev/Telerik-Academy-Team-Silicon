@@ -38,8 +38,6 @@ namespace BalloonsPops
             }
         }
 
-        public Coordinates() { }
-
         public Coordinates(int x, int y)
         {
             this.PositionX = x;
