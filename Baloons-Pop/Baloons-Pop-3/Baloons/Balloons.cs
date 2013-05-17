@@ -9,7 +9,7 @@ namespace BalloonsPops
     {
         public static void Main(string[] args)
         {
-            Engine gameEngine = new Engine();
+            Engine gameEngine = new Engine(2, 2);
             gameEngine.Run();
 
             //TopScore topScore = new TopScore();

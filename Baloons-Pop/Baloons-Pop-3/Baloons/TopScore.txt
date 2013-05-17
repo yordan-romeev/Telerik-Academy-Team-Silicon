@@ -1,1 +1,2 @@
-0. 0 0 --> 0 moves
+0. tre --> 3 moves
+1. vvv --> 4 moves

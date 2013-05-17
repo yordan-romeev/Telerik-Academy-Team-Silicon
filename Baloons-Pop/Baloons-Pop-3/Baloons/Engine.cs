@@ -50,11 +50,16 @@ namespace BalloonsPops
             }
         }
 
-        public int ShootCounter
+        public int NumberOfShootings
         {
             get
             {
                 return this.numberOfShootings;
+            }
+
+            private set
+            {
+                this.numberOfShootings = value;
             }
         }
 
@@ -91,6 +96,7 @@ namespace BalloonsPops
 
                 if (this.exit)
                 {
+                    this.scoreManager.SaveTopScoreList();
                     return;
                 }
 
@@ -134,14 +140,19 @@ namespace BalloonsPops
             {
                 Console.Write("Enter your name: ");
                 string playerName = Console.ReadLine();
+                player.Name = playerName;
                 this.scoreManager.AddToTopScoreList(player);
             }
+
+            this.gameOver = false;
         }
 
         public void NewGame()
         {
+            this.scoreManager.OpenTopScoreList();
             this.gameOver = false;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
+            this.NumberOfShootings = 0;
             Random randomGenerator = new Random();
 
             for (int row = 0; row < this.BoardHeight; row++)

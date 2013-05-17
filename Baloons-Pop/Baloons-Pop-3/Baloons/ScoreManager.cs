@@ -80,8 +80,6 @@ namespace BalloonsPops
                     }
                 }
             }
-
-            this.PrintScoreList();
         }
 
         public void PrintScoreList()
