@@ -15,6 +15,7 @@ namespace BalloonsPops
         public ScoreManager()
         {
             this.topScoreList = new List<Person>();
+            this.LoadTopScoreList();
         }
 
         public bool IsTopScore(Person person)

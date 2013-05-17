@@ -171,7 +171,6 @@ namespace BalloonsPops
 
         public void NewGame()
         {
-            this.scoreManager.LoadTopScoreList();
             this.gameOver = false;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;
             this.NumberOfShootings = 0;
