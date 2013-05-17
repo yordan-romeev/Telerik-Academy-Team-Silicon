@@ -7,6 +7,11 @@ namespace BalloonsPops
 {
     public static class CommandParser
     {
+        /// <summary>
+        /// Parse command by given string and returns the command type.
+        /// </summary>
+        /// <param name="consoleInput"></param>
+        /// <returns></returns>
         public static CommandType GetCommandType(string consoleInput)
         {
             CommandType command = CommandType.Invalid;
@@ -35,6 +40,11 @@ namespace BalloonsPops
             return command;
         }
 
+        /// <summary>
+        /// Checks if given string can be parsed to valid coordinates.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         private static bool IsValidCoordinates(string command)
         {
             bool isCoordinates = true;
@@ -63,6 +73,11 @@ namespace BalloonsPops
             return isCoordinates;
         }
 
+        /// <summary>
+        /// Parse given string command and returns coordinates.
+        /// </summary>
+        /// <param name="coordinatesAsString"></param>
+        /// <returns></returns>
         public static Coordinates ParseCoordinates(string coordinatesAsString)
         {
             char[] separators = { ' ', ',' };

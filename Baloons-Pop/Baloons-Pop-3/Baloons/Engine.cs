@@ -176,7 +176,7 @@ namespace BalloonsPops
             }
         }
 
-        public void NewGame()
+        private void NewGame()
         {
             this.gameOver = false;
             this.remainingBalloons = this.BoardWidth * this.BoardHeight;

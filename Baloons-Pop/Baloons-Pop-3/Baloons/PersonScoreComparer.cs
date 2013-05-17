@@ -7,8 +7,6 @@ namespace BalloonsPops
 {
     public class PersonScoreComparer : IComparer<Person>
     {
-
-
         /// <summary>
         /// Compares two people by their score.
         /// </summary>
