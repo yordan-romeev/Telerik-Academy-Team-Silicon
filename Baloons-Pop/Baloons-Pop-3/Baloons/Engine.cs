@@ -85,6 +85,8 @@ namespace BalloonsPops
 
         public void Run()
         {
+            Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons." +  
+                "Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
             NewGame();
 
             while (true)
@@ -166,7 +168,7 @@ namespace BalloonsPops
             PrintGameBoard();
         }
 
-        public void Shoot(int row, int col)
+        private void Shoot(int row, int col)
         {
             int balloonValue;
             balloonValue = this.board[row, col].Value;

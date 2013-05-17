@@ -3,3 +3,8 @@
 2. fff --> 4 moves
 3. vvv --> 5 moves
 4. ghg --> 5 moves
+5. tre --> 3 moves
+6. four --> 4 moves
+7. fff --> 4 moves
+8. vvv --> 5 moves
+9. ghg --> 5 moves
