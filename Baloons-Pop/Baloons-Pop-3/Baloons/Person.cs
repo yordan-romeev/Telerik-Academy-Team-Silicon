@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +12,14 @@ namespace BalloonsPops
 
         public Person()
         {
-            this.name = string.Empty;
-            this.score = 0;
+            this.Name = "Unknown player";
+            this.Score = 0;
         }
 
         public Person(int score)
             : this()
         {
-            this.score = score;
+            this.Score = score;
         }
 
         public Person(string name, int score)
@@ -37,7 +37,14 @@ namespace BalloonsPops
 
             set
             {
-                this.name = value;
+                if (value == string.Empty)
+                {
+                    this.name = "Unknown player";
+                }
+                else
+                {
+                    this.name = value;
+                }
             }
         }
 
@@ -54,14 +61,26 @@ namespace BalloonsPops
             }
         }
 
-        public static bool operator <(Person x, Person y)
+        /// <summary>
+        /// Implementation of mathematical operator less for Person 
+        /// </summary>
+        /// <param name="firstPerson">First person</param>
+        /// <param name="secondPerson">Second person</param>
+        /// <returns>True if the first person is smaller, otherwize false</returns>
+        public static bool operator <(Person firstPerson, Person secondPerson)
         {
-            return x.Score < y.Score;
+            return firstPerson.Score < secondPerson.Score;
         }
 
-        public static bool operator >(Person x, Person y)
+        /// <summary>
+        ///  Implementation of mathematical operator bigger for Person
+        /// </summary>
+        /// <param name="firstPerson">First person</param>
+        /// <param name="secondPerson">Second person</param>
+        /// <returns>True if the first person is bigger, otherwize false</returns>
+        public static bool operator >(Person firstPerson, Person secondPerson)
         {
-            return x.Score > y.Score;
+            return firstPerson.Score > secondPerson.Score;
         }
     }
 }
