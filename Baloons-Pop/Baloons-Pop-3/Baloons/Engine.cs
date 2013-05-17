@@ -322,7 +322,7 @@ namespace BalloonsPops
         /// <returns></returns>
         public string  ReadInput()
         {
-            Console.Write("Enter action (coordinates or a command): ");
+            Console.Write("Enter a row and column: ");
             string consoleInput = Console.ReadLine();
 
             return consoleInput;

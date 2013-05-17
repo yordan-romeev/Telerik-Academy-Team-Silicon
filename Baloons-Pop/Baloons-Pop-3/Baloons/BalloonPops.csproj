@@ -51,7 +51,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonScoreComparer.cs" />
-    <Compile Include="Balloons.cs" />
+    <Compile Include="BalloonsPop.cs" />
     <Compile Include="ScoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
