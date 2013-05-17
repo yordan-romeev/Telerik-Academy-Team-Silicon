@@ -92,6 +92,9 @@ namespace BalloonsPops
             this.board = balloons;
         }
 
+        /// <summary>
+        /// Starts the game loop and execute commands according to player input.
+        /// </summary>
         public void Run()
         {
             Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons." +  
@@ -126,6 +129,12 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Serves as a crossway for the commands, invoked by the Run method. Executes 
+        /// the command by given command type.
+        /// </summary>
+        /// <param name="currentCommand"></param>
+        /// <param name="command"></param>
         private void ExecuteCommand(CommandType currentCommand, string command)
         {
             switch (currentCommand)
@@ -163,6 +172,10 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Checks if the score is high enough to be a top score and saves it.
+        /// If the score is not high score, it is ignored.
+        /// </summary>
         private void SaveScore()
         {
             Person player = new Person(this.numberOfShootings);
@@ -194,6 +207,12 @@ namespace BalloonsPops
             PrintGameBoard();
         }
 
+        /// <summary>
+        /// Pops the balloon in the given position and all balloons with the same value, that are
+        /// neighbors horizontally or vertically. Calls another function to land 'flying balloons'.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
         private void Shoot(int row, int col)
         {
             int balloonValue;
