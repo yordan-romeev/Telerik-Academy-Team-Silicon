@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonsPops
 {
-    class Balloon
+    public class Balloon
     {
         private int value;
 
@@ -16,8 +16,13 @@ namespace BalloonsPops
                 return this.value;
             }
 
-            private set
+            set
             {
+                if (value <= 0 || 5 <= value)
+                {
+                    throw new ArgumentOutOfRangeException("Balloon's value must be in the [1,4] range.");
+                }
+
                 this.value = value;
             }
         }
@@ -29,7 +34,7 @@ namespace BalloonsPops
 
         public void Pop()
         {
-            this.Value = 0;
+            this.value = 0;
         }
     }
 }

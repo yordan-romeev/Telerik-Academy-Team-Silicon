@@ -127,7 +127,19 @@ namespace BalloonsPops
                     break;
                 case CommandType.Coordinates:
                     Coordinates coordinates = CommandParser.ParseCoordinates(command);
-                    Shoot(coordinates.PositionX, coordinates.PositionY);
+
+                    if (coordinates.PositionX < 0 || this.BoardWidth <= coordinates.PositionX ||
+                        coordinates.PositionY < 0 || this.BoardHeight <= coordinates.PositionY)
+                    {
+                        throw new ArgumentOutOfRangeException(
+                            String.Format("First coordinate must be in [0, {0}) range, second in [0, {1})", 
+                            this.BoardHeight, 
+                            this.BoardWidth));
+                    }
+                    else
+                    {
+                        Shoot(coordinates.PositionX, coordinates.PositionY);
+                    }
                     break;
                 default:
                     break;
@@ -180,7 +192,7 @@ namespace BalloonsPops
                 return;
             }
 
-            board[row, col].Value = 0;
+            board[row, col].Pop();
             this.remainingBalloons--;
 
             currentRow = row - 1;
@@ -188,7 +200,7 @@ namespace BalloonsPops
 
             while (currentRow >= 0 && balloonValue == this.board[currentRow, currentCol].Value)
             {
-                this.board[currentRow, currentCol].Value = 0;
+                this.board[currentRow, currentCol].Pop();
                 remainingBalloons--;
                 currentRow--;
             }
@@ -198,7 +210,7 @@ namespace BalloonsPops
 
             while (currentRow < this.BoardHeight && balloonValue == this.board[currentRow, currentCol].Value)
             {
-                this.board[currentRow, currentCol].Value = 0;
+                this.board[currentRow, currentCol].Pop();
                 remainingBalloons--;
                 currentRow++;
             }
@@ -208,7 +220,7 @@ namespace BalloonsPops
 
             while (currentCol >= 0 && balloonValue == this.board[currentRow, currentCol].Value)
             {
-                this.board[currentRow, currentCol].Value = 0;
+                this.board[currentRow, currentCol].Pop();
                 remainingBalloons--;
                 currentCol--;
             }
@@ -218,7 +230,7 @@ namespace BalloonsPops
 
             while (currentCol < this.BoardWidth && balloonValue == this.board[currentRow, currentCol].Value)
             {
-                this.board[currentRow, currentCol].Value = 0;
+                this.board[currentRow, currentCol].Pop();
                 remainingBalloons--;
                 currentCol++;
             }
