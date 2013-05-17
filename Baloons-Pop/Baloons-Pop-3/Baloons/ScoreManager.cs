@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace BalloonsPops
@@ -18,6 +17,11 @@ namespace BalloonsPops
             this.LoadTopScoreList();
         }
 
+        /// <summary>
+        /// Check if the new person`s score is the high score
+        /// </summary>
+        /// <param name="person">New person</param>
+        /// <returns>True if the score is higher otherwize return false</returns>
         public bool IsTopScore(Person person)
         {
             if (this.topScoreList.Count >= MAX_TOP_SCORE_COUNT)
@@ -37,6 +41,10 @@ namespace BalloonsPops
             return true;
         }
 
+        /// <summary>
+        /// Add the new person to the TopScore list
+        /// </summary>
+        /// <param name="person">New player</param>
         public void AddToTopScoreList(Person person)
         {
             this.topScoreList.Add(person);
@@ -48,6 +56,9 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Reads the information from the file and keep it in the topScoreList
+        /// </summary>
         public void LoadTopScoreList()
         {
             using (StreamReader topScoreStreamReader = new StreamReader(PATH))
@@ -71,6 +82,9 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Saves the information from topScoreList into the file
+        /// </summary>
         public void SaveTopScoreList()
         {
             if (this.topScoreList.Count > 0)
@@ -88,6 +102,9 @@ namespace BalloonsPops
             }
         }
 
+        /// <summary>
+        /// Prints information from the list with the top scores on the console
+        /// </summary>
         public void PrintScoreList()
         {
             Console.WriteLine("Scoreboard:");

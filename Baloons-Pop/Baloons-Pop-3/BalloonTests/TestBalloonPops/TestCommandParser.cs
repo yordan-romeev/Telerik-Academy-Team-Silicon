@@ -32,6 +32,30 @@ namespace TestBalloonPops
         }
 
         [TestMethod]
+        public void TestValidCoordinates()
+        {
+            CommandType commandType = CommandParser.GetCommandType("2 3");
+
+            Assert.AreEqual(CommandType.Coordinates, commandType);
+        }
+
+        [TestMethod]
+        public void TestIsValidCoordinatesY()
+        {
+            CommandType commandType = CommandParser.GetCommandType("2 a3");
+
+            Assert.AreEqual(CommandType.Invalid, commandType);
+        }
+
+        [TestMethod]
+        public void TestIsValidCoordinatesX()
+        {
+            CommandType commandType = CommandParser.GetCommandType("2v 3");
+
+            Assert.AreEqual(CommandType.Invalid, commandType);
+        }
+
+        [TestMethod]
         public void TestGetCommandTypeWithRestartWhiteSpaces()
         {
             CommandType commandType = CommandParser.GetCommandType("  restart  ");
@@ -54,5 +78,17 @@ namespace TestBalloonPops
 
             Assert.AreEqual(CommandType.TopScore, commandType);
         }
+
+        [TestMethod]
+        public void TestParseCoordinates()
+        {
+            string coordinatesAsString = "2 3";
+            Coordinates expected = new Coordinates(2, 3);
+            Coordinates actual = CommandParser.ParseCoordinates(coordinatesAsString);
+
+            Assert.AreEqual(expected.Row, actual.Row);
+            Assert.AreEqual(expected.Column, actual.Column);
+        }
+
     }
 }
