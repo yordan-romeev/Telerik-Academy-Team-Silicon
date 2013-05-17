@@ -83,6 +83,15 @@ namespace BalloonsPops
             this.board = new Balloon[this.BoardHeight, this.BoardWidth];
         }
 
+        public Engine(Balloon[,] balloons)
+        {
+            this.BoardWidth = balloons.GetLength(1);
+            this.BoardHeight = balloons.GetLength(0);
+            this.numberOfShootings = 0;
+            this.remainingBalloons = this.BoardWidth * this.BoardHeight;
+            this.board = balloons;
+        }
+
         public void Run()
         {
             Console.WriteLine("Welcome to “Balloons Pops” game. Please try to pop the balloons." +  
